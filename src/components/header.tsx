@@ -625,7 +625,7 @@ export default function Header() {
           <div className="flex items-center justify-between p-4 border-b">
             <Link href="/" className="flex items-center">
               <Image
-                src="/assets/coporaLogoFooter.png"
+                src="/coporaLogoFooter.svg"
                 alt="Copora Logo"
                 width={150}
                 height={50}
