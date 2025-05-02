@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 
@@ -196,7 +197,7 @@ function ClientServiceDetails() {
           ref={(el) => {
             if (el) sectionRefs.current[0] = el;
           }}
-          className="flex flex-col md:flex-row items-center mb-24 gap-8 relative  border-b"
+          className="flex flex-col md:flex-row items-center mb-10 gap-8 relative  border-b"
         >
           <motion.div
             className="w-full md:w-1/2 "
@@ -265,6 +266,7 @@ function ClientServiceDetails() {
                 if (el) videoRefs.current[0] = el;
               }}
               className="w-full h-auto rounded-lg"
+              autoPlay
               muted
               loop
               playsInline
@@ -280,7 +282,7 @@ function ClientServiceDetails() {
           ref={(el) => {
             if (el) sectionRefs.current[1] = el;
           }}
-          className="flex flex-col md:flex-row-reverse items-center mb-24 gap-8 relative border-b"
+          className="flex flex-col md:flex-row-reverse items-center mb-10 gap-8 relative border-b"
         >
           <motion.div
             className="w-full md:w-1/2"
@@ -347,6 +349,7 @@ function ClientServiceDetails() {
                 if (el) videoRefs.current[1] = el;
               }}
               className="w-full h-auto rounded-lg"
+              autoPlay
               muted
               loop
               playsInline
@@ -362,7 +365,7 @@ function ClientServiceDetails() {
           ref={(el) => {
             if (el) sectionRefs.current[2] = el;
           }}
-          className="flex flex-col md:flex-row items-center mb-24 gap-8 relative border-b"
+          className="flex flex-col md:flex-row items-center mb-10 gap-8 relative border-b"
         >
           <motion.div
             className="w-full md:w-1/2"
@@ -429,6 +432,7 @@ function ClientServiceDetails() {
                 if (el) videoRefs.current[2] = el;
               }}
               className="w-full h-auto rounded-lg"
+              autoPlay
               muted
               loop
               playsInline
@@ -444,7 +448,7 @@ function ClientServiceDetails() {
           ref={(el) => {
             if (el) sectionRefs.current[3] = el;
           }}
-          className="flex flex-col md:flex-row-reverse items-center mb-24 gap-8 relative border-b"
+          className="flex flex-col md:flex-row-reverse items-center mb-10 gap-8 relative border-b"
         >
           <motion.div
             className="w-full md:w-1/2"
@@ -510,6 +514,7 @@ function ClientServiceDetails() {
                 if (el) videoRefs.current[3] = el;
               }}
               className="w-full h-auto rounded-lg"
+              autoPlay
               muted
               loop
               playsInline
@@ -592,6 +597,7 @@ function ClientServiceDetails() {
                 if (el) videoRefs.current[4] = el;
               }}
               className="w-full h-auto rounded-lg"
+              autoPlay
               muted
               loop
               playsInline
@@ -778,7 +784,7 @@ function CandidateServiceDetails() {
           ref={(el) => {
             if (el) sectionRefs.current[0] = el;
           }}
-          className="flex flex-col md:flex-row items-center mb-24 gap-8 relative border-b"
+          className="flex flex-col md:flex-row items-center mb-10 gap-8 relative border-b"
         >
           <motion.div
             className="w-full md:w-1/2"
@@ -844,6 +850,7 @@ function CandidateServiceDetails() {
                 if (el) videoRefs.current[0] = el;
               }}
               className="w-full h-auto rounded-lg"
+              autoPlay
               muted
               loop
               playsInline
@@ -859,7 +866,7 @@ function CandidateServiceDetails() {
           ref={(el) => {
             if (el) sectionRefs.current[1] = el;
           }}
-          className="flex flex-col md:flex-row-reverse items-center mb-24 gap-8 relative border-b"
+          className="flex flex-col md:flex-row-reverse items-center mb-10 gap-8 relative border-b"
         >
           <motion.div
             className="w-full md:w-1/2"
@@ -925,6 +932,7 @@ function CandidateServiceDetails() {
                 if (el) videoRefs.current[1] = el;
               }}
               className="w-full h-auto rounded-lg"
+              autoPlay
               muted
               loop
               playsInline
@@ -940,7 +948,7 @@ function CandidateServiceDetails() {
           ref={(el) => {
             if (el) sectionRefs.current[2] = el;
           }}
-          className="flex flex-col md:flex-row items-center mb-24 gap-8 relative border-b"
+          className="flex flex-col md:flex-row items-center mb-10 gap-8 relative border-b"
         >
           <motion.div
             className="w-full md:w-1/2"
@@ -1006,6 +1014,7 @@ function CandidateServiceDetails() {
                 if (el) videoRefs.current[2] = el;
               }}
               className="w-full h-auto rounded-lg"
+              autoPlay
               muted
               loop
               playsInline
@@ -1021,7 +1030,7 @@ function CandidateServiceDetails() {
           ref={(el) => {
             if (el) sectionRefs.current[3] = el;
           }}
-          className="flex flex-col md:flex-row-reverse items-center mb-24 gap-8 relative border-b"
+          className="flex flex-col md:flex-row-reverse items-center mb-10 gap-8 relative border-b"
         >
           <motion.div
             className="w-full md:w-1/2"
@@ -1087,6 +1096,7 @@ function CandidateServiceDetails() {
                 if (el) videoRefs.current[3] = el;
               }}
               className="w-full h-auto rounded-lg"
+              autoPlay
               muted
               loop
               playsInline
@@ -1169,6 +1179,7 @@ function CandidateServiceDetails() {
                 if (el) videoRefs.current[4] = el;
               }}
               className="w-full h-auto rounded-lg"
+              autoPlay
               muted
               loop
               playsInline
