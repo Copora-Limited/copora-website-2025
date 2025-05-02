@@ -372,7 +372,7 @@ export default function CandidateService() {
   };
 
   return (
-    <section className="bg-[#0a2540] text-white py-16 min-h-screen relative ">
+    <section className="bg-[#0a2540] text-white py-16   ">
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-start">
           {/* Left side */}
@@ -434,9 +434,9 @@ export default function CandidateService() {
       </div>
 
       {/* Ribbon divider using image */}
-      <div className="gradient-wrapper absolute -bottom-24 left-0 w-full">
+      {/* <div className="gradient-wrapper absolute -bottom-24 left-0 w-full hidden">
         <div className="gradient-style ribbon-blue h-24 w-full bg-no-repeat bg-cover bg-bottom"></div>
-      </div>
+      </div> */}
     </section>
   );
 }
