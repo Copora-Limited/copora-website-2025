@@ -430,7 +430,6 @@ export default function ClientService() {
           </div>
         </div>
       </div>
-
       {/* Ribbon divider using image */}
       {/* <div className="gradient-wrapper absolute -bottom-24 left-0 w-full hidden">
         <div className="gradient-style ribbon-white h-24 w-full bg-no-repeat bg-cover bg-bottom"></div>
