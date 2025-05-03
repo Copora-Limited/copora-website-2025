@@ -135,7 +135,7 @@ export default function PermanentStaffingPage() {
             </p>
           </div>
 
-          <TalentOptimizationTabs />
+          <TalentOptimizationTabs tabs={[]} />
         </div>
       </section>
 
