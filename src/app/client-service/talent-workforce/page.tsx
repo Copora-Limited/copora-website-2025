@@ -66,25 +66,25 @@ export default function TalentWorkforcePage() {
       title: "On-Demand Talent Access",
       content:
         "Gain immediate access to specialized professionals when you need them, without the long-term commitment of traditional hiring.",
-      image: "/images/talent-optimization/glasses-image.png",
+      image: "/images/talent-optimization/on-demand-talent-access.jpg",
     },
     {
       title: "Strategic Workforce Planning",
       content:
         "We help you develop a comprehensive workforce strategy that aligns with your business objectives and adapts to changing needs.",
-      image: "/images/talent-optimization/conference.png",
+      image: "/images/talent-optimization/strategic-workforce-planning.jpg",
     },
     {
       title: "Managed Service Solutions",
       content:
         "Our end-to-end managed service offerings provide complete oversight of your contingent workforce.",
-      image: "/images/talent-optimization/hands-together.png",
+      image: "/images/talent-optimization/managed-service-solutions.jpg",
     },
     {
       title: "Workforce Analytics",
       content:
         "Gain valuable insights into your workforce performance, utilization, and costs to optimize your talent strategy.",
-      image: "/images/talent-optimization/lady-smiling.png",
+      image: "/images/talent-optimization/workforce-analytics.jpg",
     },
   ];
 
