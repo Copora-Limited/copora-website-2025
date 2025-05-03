@@ -1,59 +1,64 @@
-"use client"
+"use client";
 
-import { useState, useRef } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
-import Image from "next/image"
-import Header from "@/components/header"
-import Footer from "@/components/footer"
-import TalentOptimizationTabs from "@/components/talent-optimization-tabs"
-import CardStackContainer from "@/components/card-stack-container"
-import InfoGraphics from "@/components/info-graphics"
-import HoverCardTagline from "@/components/hover-card-tagline"
-import ContactDrawer from "@/components/contact-drawer"
+import { useState, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
+import TalentOptimizationTabs from "@/components/talent-optimization-tabs";
+import CardStackContainer from "@/components/card-stack-container";
+import InfoGraphics from "@/components/info-graphics";
+import HoverCardTagline from "@/components/hover-card-tagline";
+import ContactDrawer from "@/components/contact-drawer";
 
 export default function HighVolumeHourlyPage() {
-  const { scrollY } = useScroll()
-  const yTransform = useTransform(scrollY, [0, 500], [0, 0])
-  const [drawerOpen, setDrawerOpen] = useState(false)
-  const nextSectionRef = useRef<HTMLDivElement>(null)
+  const { scrollY } = useScroll();
+  const yTransform = useTransform(scrollY, [0, 500], [0, 0]);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const nextSectionRef = useRef<HTMLDivElement>(null);
 
   const toggleDrawer = () => {
-    setDrawerOpen((prev) => !prev)
-  }
+    setDrawerOpen((prev) => !prev);
+  };
 
   // Card data for the card stack section
   const cardData = [
     {
       id: "1",
       title: "Rapid Scaling",
-      description: "Quickly scale your workforce up or down to meet seasonal demands or business growth.",
+      description:
+        "Quickly scale your workforce up or down to meet seasonal demands or business growth.",
       image: "/images/rapid-scaling.jpg",
     },
     {
       id: "2",
       title: "Quality Consistency",
-      description: "Maintain consistent quality standards across large volumes of hires.",
-      image: "/images/quality-consistency.jpg",
+      description:
+        "Maintain consistent quality standards across large volumes of hires.",
+      image: "/images/computer.jpg",
     },
     {
       id: "3",
       title: "Streamlined Processes",
-      description: "Benefit from our efficient, technology-enabled recruitment and onboarding processes.",
+      description:
+        "Benefit from our efficient, technology-enabled recruitment and onboarding processes.",
       image: "/images/streamlined-processes.jpg",
     },
     {
       id: "4",
       title: "Cost Efficiency",
-      description: "Optimize your recruitment budget with our volume-based hiring solutions that reduce cost-per-hire.",
+      description:
+        "Optimize your recruitment budget with our volume-based hiring solutions that reduce cost-per-hire.",
       image: "/images/cost-efficiency.jpg",
     },
     {
       id: "5",
       title: "Compliance Management",
-      description: "We ensure all hiring processes comply with relevant regulations and standards.",
+      description:
+        "We ensure all hiring processes comply with relevant regulations and standards.",
       image: "/images/compliance-management.jpg",
     },
-  ]
+  ];
 
   // Tabs data for high volume hiring section
   const highVolumeTabs = [
@@ -77,10 +82,11 @@ export default function HighVolumeHourlyPage() {
     },
     {
       title: "Workforce Analytics",
-      content: "Gain insights into your high-volume workforce performance and optimize your staffing strategy.",
+      content:
+        "Gain insights into your high-volume workforce performance and optimize your staffing strategy.",
       image: "/images/talent-optimization/lady-smiling.png",
     },
-  ]
+  ];
 
   return (
     <main className="min-h-screen">
@@ -96,7 +102,10 @@ export default function HighVolumeHourlyPage() {
         <div className="container mx-auto px-6 h-full">
           <div className="flex flex-col-reverse md:flex-row items-center h-full py-12">
             <div className="w-full md:w-1/2 flex flex-col justify-start items-start gap-4 md:gap-6 z-10">
-              <div className="text-[#0AB5B5] text-lg" style={{ fontFamily: "var(--font-medium)" }}>
+              <div
+                className="text-[#0AB5B5] text-lg"
+                style={{ fontFamily: "var(--font-medium)" }}
+              >
                 High Volume Hourly Rating
               </div>
               <h1
@@ -105,9 +114,13 @@ export default function HighVolumeHourlyPage() {
               >
                 Efficient Large-Scale Hiring Solutions
               </h1>
-              <p className="text-white/90 text-base md:text-lg" style={{ fontFamily: "var(--font-regular)" }}>
-                Whether you're facing seasonal peaks or long-term growth, we provide a streamlined process to hire top
-                talent quickly, ensuring your workforce keeps pace with business demands.
+              <p
+                className="text-white/90 text-base md:text-lg"
+                style={{ fontFamily: "var(--font-regular)" }}
+              >
+                Whether you're facing seasonal peaks or long-term growth, we
+                provide a streamlined process to hire top talent quickly,
+                ensuring your workforce keeps pace with business demands.
               </p>
               <button
                 onClick={toggleDrawer}
@@ -119,7 +132,7 @@ export default function HighVolumeHourlyPage() {
             </div>
             <div className="w-full md:w-1/2 h-[300px] md:h-[500px] relative mb-8 md:mb-0">
               <Image
-                src="/images/high-volume-hero.png"
+                src="/images/showingmeet.jpg"
                 alt="Large team of professionals"
                 fill
                 className="object-cover rounded-lg"
@@ -140,9 +153,13 @@ export default function HighVolumeHourlyPage() {
             >
               Scalable Hiring Solutions
             </h2>
-            <p className="text-gray-600" style={{ fontFamily: "var(--font-regular)" }}>
-              Our high-volume hourly rating solutions combine technology, expertise, and proven processes to help you
-              efficiently hire large numbers of qualified candidates.
+            <p
+              className="text-gray-600"
+              style={{ fontFamily: "var(--font-regular)" }}
+            >
+              Our high-volume hourly rating solutions combine technology,
+              expertise, and proven processes to help you efficiently hire large
+              numbers of qualified candidates.
             </p>
           </div>
 
@@ -152,16 +169,28 @@ export default function HighVolumeHourlyPage() {
 
       {/* Full-width Image Section */}
       <section className="relative w-full py-24 bg-cover bg-center flex items-center justify-center">
-        <Image src="/images/high-volume-bg.png" alt="Large-scale recruitment process" fill className="object-cover" />
+        <Image
+          src="/images/twolooking.jpg"
+          alt="Large-scale recruitment process"
+          fill
+          className="object-cover"
+        />
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6" style={{ fontFamily: "var(--font-bold)" }}>
+            <h2
+              className="text-3xl md:text-5xl font-bold text-white mb-6"
+              style={{ fontFamily: "var(--font-bold)" }}
+            >
               Scale your workforce without sacrificing quality
             </h2>
-            <p className="text-white/90 text-lg" style={{ fontFamily: "var(--font-regular)" }}>
-              Our high-volume hiring solutions help you quickly build a qualified workforce while maintaining
-              consistency, quality, and compliance throughout the process.
+            <p
+              className="text-white/90 text-lg"
+              style={{ fontFamily: "var(--font-regular)" }}
+            >
+              Our high-volume hiring solutions help you quickly build a
+              qualified workforce while maintaining consistency, quality, and
+              compliance throughout the process.
             </p>
           </div>
         </div>
@@ -170,7 +199,11 @@ export default function HighVolumeHourlyPage() {
       {/* Card Stack Section */}
       <section className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-6">
-          <CardStackContainer title="Benefits of our high-volume hiring solutions" cards={cardData} defaultOpen={0} />
+          <CardStackContainer
+            title="Benefits of our high-volume hiring solutions"
+            cards={cardData}
+            defaultOpen={0}
+          />
         </div>
       </section>
 
@@ -192,7 +225,10 @@ export default function HighVolumeHourlyPage() {
       </section>
 
       {/* Hover Card Tagline Section */}
-      <motion.section style={{ y: yTransform }} className="py-16 md:py-24 bg-white">
+      <motion.section
+        style={{ y: yTransform }}
+        className="py-16 md:py-24 bg-white"
+      >
         <div className="container mx-auto px-6">
           <HoverCardTagline />
         </div>
@@ -203,5 +239,5 @@ export default function HighVolumeHourlyPage() {
 
       <Footer />
     </main>
-  )
+  );
 }

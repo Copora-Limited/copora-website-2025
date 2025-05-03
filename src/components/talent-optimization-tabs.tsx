@@ -4,41 +4,22 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
+// Define the interface for a single tab
 interface Tab {
   title: string;
   content: string;
   image: string;
 }
 
-export default function TalentOptimizationTabs() {
-  const [activeTab, setActiveTab] = useState(0);
+// Define the props interface for the component
+interface TalentOptimizationTabsProps {
+  tabs: Tab[];
+}
 
-  const tabs: Tab[] = [
-    {
-      title: "Enhancing Talent Acquisition",
-      content:
-        "Efficiently attracting top talent is key to success, and we specialize in crafting recruitment processes that deliver exceptional, tailored results.",
-      image: "/images/talent-optimization/glasses-image.jpg",
-    },
-    {
-      title: "Streamlining Onboarding and Integration",
-      content:
-        "Effective onboarding boosts retention and productivity. We ensure smooth integration for your new hires.",
-      image: "/images/talent-optimization/conference.jpg",
-    },
-    {
-      title: "Hiring Hard-to-Find Talent",
-      content:
-        "We leverage our network and industry expertise to find and engage top-tier, hard-to-find talent.",
-      image: "/images/talent-optimization/hands-together.jpg",
-    },
-    {
-      title: "Promoting Diversity, Equity, and Inclusion",
-      content:
-        "We always ensure that individuals from all backgrounds feel welcomed, respected, and empowered.",
-      image: "/images/talent-optimization/lady-smiling.jpg",
-    },
-  ];
+export default function TalentOptimizationTabs({
+  tabs,
+}: TalentOptimizationTabsProps) {
+  const [activeTab, setActiveTab] = useState(0);
 
   // Auto-rotate tabs every 8 seconds
   useEffect(() => {

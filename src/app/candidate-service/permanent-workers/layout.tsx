@@ -1,17 +1,9 @@
-import type { ReactNode } from "react";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
+import type React from "react";
 
 export default function PermanentWorkersLayout({
   children,
 }: {
-  children: ReactNode;
+  children: React.ReactNode;
 }) {
-  return (
-    <>
-      <Header />
-      <main>{children}</main>
-      <Footer />
-    </>
-  );
+  return <>{children}</>;
 }

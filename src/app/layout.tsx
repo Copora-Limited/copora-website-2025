@@ -1,7 +1,7 @@
 import type React from "react";
 import type { Metadata } from "next";
 import "./global.css";
-
+import { Toaster } from "@/components/ui/toaster";
 export const metadata: Metadata = {
   title: "Copora - Talent Solutions",
   description:
@@ -23,7 +23,9 @@ export default function RootLayout({
           }
         `}</style>
       </head>
-      <body>{children}</body>
+      <body>
+        {children} <Toaster />
+      </body>
     </html>
   );
 }
