@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
 interface HeroSectionProps {
-  onTabChange?: (tab: "Looking hire" | "Looking for Job") => void;
+  onTabChange?: (tab: "hiring" | "freelancers") => void;
 }
 
 export default function HeroSection({ onTabChange }: HeroSectionProps) {
@@ -57,7 +57,7 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
                 onClick={() => handleTabChange("hiring")}
                 style={{ fontFamily: "var(--font-medium)" }}
               >
-                For Hiring
+                Looking for hire
               </button>
               <button
                 className={`px-4 py-1 rounded-full ${
@@ -68,7 +68,7 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
                 onClick={() => handleTabChange("freelancers")}
                 style={{ fontFamily: "var(--font-medium)" }}
               >
-                For Freelancers
+                Looking for Job
               </button>
             </div>
 
