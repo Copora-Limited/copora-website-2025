@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
 interface HeroSectionProps {
-  onTabChange?: (tab: "hiring" | "freelancers") => void;
+  onTabChange?: (tab: "Looking hire" | "Looking for Job") => void;
 }
 
 export default function HeroSection({ onTabChange }: HeroSectionProps) {
