@@ -94,7 +94,7 @@ export default function PermanentStaffingPage() {
 
       {/* Hero Section */}
       <section
-        className="relative w-full min-h-[80vh] pt-[72px] bg-[#0a2540] bg-cover bg-center"
+        className="relative w-full min-h-[80vh] pt-[32px] bg-[#0a2540] bg-cover bg-center"
         style={{
           backgroundImage: "url('/images/vector-bg-blue.png')",
         }}

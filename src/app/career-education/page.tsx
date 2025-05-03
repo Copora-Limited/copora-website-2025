@@ -50,7 +50,7 @@ export default function CareerEducationPage() {
       <Header />
 
       {/* Parallax Hero Section */}
-      <section className="relative h-screen w-full overflow-hidden pt-[72px]">
+      <section className="relative h-screen w-full overflow-hidden pt-[32px]">
         {/* Parallax Image Columns */}
         <div className="absolute inset-0 grid grid-cols-5 gap-0">
           {columns.map((columnImages, colIndex) => (
