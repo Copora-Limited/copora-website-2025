@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import { scroller } from "react-scroll";
 
 interface HeroSectionProps {
   onTabChange?: (tab: "hiring" | "freelancers") => void;
@@ -46,7 +45,12 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
     >
       <div className="container mx-auto px-6 py-16 relative z-10">
         <div className="flex flex-col md:flex-row">
-          <div className="w-full md:w-1/2 pt-10">
+          <motion.div
+            className="w-full md:w-1/2 pt-10"
+            initial={{ x: -100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
             {/* Toggle buttons */}
             <div className="inline-flex items-center bg-[#0a2540]/30 rounded-full p-1 mb-8">
               <button
@@ -69,7 +73,7 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
                 onClick={() => handleTabChange("freelancers")}
                 style={{ fontFamily: "var(--font-medium)" }}
               >
-                Looking for Job
+                Looking For Job
               </button>
             </div>
 
@@ -171,16 +175,22 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
                 </div>
               </>
             )}
-          </div>
+          </motion.div>
 
-          <div className="hidden md:block w-full md:w-1/2 relative">
+          <motion.div
+            className="hidden md:block w-full md:w-1/2 relative h-full flex items-end"
+            initial={{ x: 100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          >
             {activeTab === "hiring" ? (
               <Image
                 src="/images/suit-2.png"
                 alt="Professional in suit"
                 width={500}
                 height={600}
-                className="object-contain h-full"
+                className="object-contain"
+                style={{ marginBottom: 0 }}
                 priority
               />
             ) : (
@@ -189,11 +199,12 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
                 alt="Smiling professionals"
                 width={500}
                 height={600}
-                className="object-contain h-full"
+                className="object-contain"
+                style={{ marginBottom: 0 }}
                 priority
               />
             )}
-          </div>
+          </motion.div>
         </div>
       </div>
 
