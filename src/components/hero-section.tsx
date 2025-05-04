@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import { scroller } from "react-scroll";
 
 interface HeroSectionProps {
   onTabChange?: (tab: "hiring" | "freelancers") => void;
@@ -28,7 +29,7 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
 
     // Scroll to the next section (viewport height + some offset)
     window.scrollTo({
-      top: viewportHeight - 72, // Subtract header height
+      top: viewportHeight, // Subtract header height
       behavior: "smooth",
     });
   };
