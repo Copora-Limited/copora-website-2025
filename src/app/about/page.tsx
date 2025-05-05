@@ -86,14 +86,14 @@ export default function AboutPage() {
           <video
             ref={videoRef}
             className="absolute top-0 left-0 w-full h-full object-cover"
-            src="/video/aboutUs.mp4"
+            src="/videos/about-us.mp4"
             autoPlay
             loop
             playsInline
             muted
             poster="/images/aboutUsPoster.jpg"
           />
-          <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+          <div className="absolute inset-0 bg-black bg-opacity-100"></div>
         </div>
 
         {/* Hero Content */}
