@@ -28,35 +28,35 @@ export default function AssessmentPage() {
       title: "Technical Skills Assessment",
       description:
         "Evaluate candidates' technical abilities with precision through our comprehensive skills assessment tools.",
-      image: "/images/technical-skills.jpg",
+      image: "/images/talent-optimization/technical-skills-assessment.jpg",
     },
     {
       id: "2",
       title: "Behavioral Analysis",
       description:
         "Understand how candidates will perform in real-world scenarios with our behavioral assessments.",
-      image: "/images/behavioral-analysis.jpg",
+      image: "/images/talent-optimization/behavioral-analysis.jpg",
     },
     {
       id: "3",
       title: "Cultural Fit Evaluation",
       description:
         "Ensure candidates align with your organization's values and work environment.",
-      image: "/images/cultural-fit.jpg",
+      image: "/images/talent-optimization/cultural-fit-evaluation.jpg",
     },
     {
       id: "4",
       title: "Cognitive Ability Testing",
       description:
         "Measure problem-solving abilities, critical thinking, and learning potential.",
-      image: "/images/cognitive-ability.jpg",
+      image: "/images/talent-optimization/cognitive-ability.jpg",
     },
     {
       id: "5",
       title: "Personality Profiling",
       description:
         "Gain insights into candidates' work styles, motivations, and interpersonal dynamics.",
-      image: "/images/personality-profiling.jpg",
+      image: "/images/talent-optimization/personality-profiling.jpg",
     },
   ];
 
@@ -66,25 +66,25 @@ export default function AssessmentPage() {
       title: "Comprehensive Skill Evaluation",
       content:
         "Our multi-dimensional assessment approach evaluates technical skills, soft skills, and cultural fit to provide a complete picture of each candidate.",
-      image: "/images/talent-optimization/glasses-image.png",
+      image: "/images/talent-optimization/evaluation.jpg",
     },
     {
       title: "Data-Driven Insights",
       content:
         "We leverage advanced analytics to provide actionable insights about candidates' strengths, weaknesses, and potential.",
-      image: "/images/talent-optimization/conference.png",
+      image: "/images/talent-optimization/data-driven-insights.jpg",
     },
     {
       title: "Customized Assessment Design",
       content:
         "We create tailored assessment processes that align with your specific role requirements and company culture.",
-      image: "/images/talent-optimization/hands-together.png",
+      image: "/images/talent-optimization/customized-assessment-design.jpg",
     },
     {
       title: "Objective Decision Support",
       content:
         "Our assessment tools help eliminate bias and provide objective data to support your hiring decisions.",
-      image: "/images/talent-optimization/lady-smiling.png",
+      image: "/images/talent-optimization/objective-decision-support.jpg",
     },
   ];
 
@@ -170,7 +170,7 @@ export default function AssessmentPage() {
       {/* Full-width Image Section */}
       <section className="relative w-full py-24 bg-cover bg-center flex items-center justify-center">
         <Image
-          src="/images/assessment-bg.png"
+          src="/images/manreading.jpg"
           alt="Assessment process visualization"
           fill
           className="object-cover"

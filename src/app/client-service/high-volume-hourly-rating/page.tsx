@@ -66,26 +66,21 @@ export default function HighVolumeHourlyPage() {
       title: "Mass Recruitment Campaigns",
       content:
         "We design and execute large-scale recruitment campaigns that efficiently attract and process high volumes of candidates.",
-      image: "/images/talent-optimization/glasses-image.png",
+      image: "/images/talent-optimization/mass-recruitment-campaigns.jpg",
     },
     {
       title: "Automated Screening",
       content:
         "Our technology-enabled screening processes quickly identify qualified candidates from large applicant pools.",
-      image: "/images/talent-optimization/conference.png",
+      image: "/images/talent-optimization/job-screening.jpg",
     },
     {
       title: "Bulk Onboarding",
       content:
         "We streamline the onboarding process for large groups of new hires, ensuring efficiency and compliance.",
-      image: "/images/talent-optimization/hands-together.png",
+      image: "/images/talent-optimization/bulk-onboarding.jpg",
     },
-    {
-      title: "Workforce Analytics",
-      content:
-        "Gain insights into your high-volume workforce performance and optimize your staffing strategy.",
-      image: "/images/talent-optimization/lady-smiling.png",
-    },
+
   ];
 
   return (

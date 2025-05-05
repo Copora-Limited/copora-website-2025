@@ -9,17 +9,27 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    domains: ["v0.blob.com"],
+    domains: ["copora.com"], // Keep existing domains
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "v0.blob.com",
+        hostname: "copora.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "http", // Use http for the IP address
+        hostname: "167.99.199.102",
         port: "",
         pathname: "/**",
       },
     ],
-    unoptimized: true,
+    unoptimized: false,
+    minimumCacheTTL: 60,
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
+    imageSizes: [16, 32, 64, 96, 128, 256, 384],
   },
+  staticPageGenerationTimeout: 120,
 };
 
 export default nextConfig;

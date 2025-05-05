@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
-import axios from "axios";
+import { fetchWithCache } from "@/lib/api-cache";
+import ImageWithFallback from "@/components/image-with-fallback";
 
 interface BlogPost {
   id: string;
@@ -57,12 +57,17 @@ export default function BlogSection() {
         // Use environment variable for API URL or fallback to a default
         const apiUrl =
           process.env.NEXT_PUBLIC_COPORA_BLOG_API ||
-          "https://api.example.com/blogs"; // Replace with your actual API endpoint
+          "https://api.example.com/blogs";
 
-        const response = await axios.get(apiUrl);
+        // Use the cached fetch with a 10-minute cache time
+        const response = await fetchWithCache(
+          apiUrl,
+          undefined,
+          10 * 60 * 1000
+        );
 
         // Transform the API response to match our BlogPost interface
-        const transformedData = response.data.map((blog: any) => ({
+        const transformedData = response.map((blog: any) => ({
           id: blog.id || String(Math.random()),
           title: blog.title || "Untitled Blog Post",
           category: blog.category || "Marketing",
@@ -316,7 +321,7 @@ export default function BlogSection() {
                           exit={{ opacity: 0, width: 0 }}
                           transition={{ duration: 0.5 }}
                         >
-                          <Image
+                          <ImageWithFallback
                             src={
                               post.featured_image?.main_image ||
                               post.image ||
@@ -326,6 +331,7 @@ export default function BlogSection() {
                             className="object-cover"
                             fill
                             sizes="(max-width: 768px) 100vw, 33vw"
+                            loading={index === 0 ? "eager" : "lazy"}
                           />
                         </motion.div>
                       )}
@@ -389,7 +395,7 @@ export default function BlogSection() {
                 <div key={post.id} className="w-full flex-shrink-0 px-2">
                   <div className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
                     <div className="relative h-48 w-full">
-                      <Image
+                      <ImageWithFallback
                         src={
                           post.featured_image?.thumbnail ||
                           post.image ||
@@ -399,6 +405,7 @@ export default function BlogSection() {
                         fill
                         className="object-cover"
                         sizes="100vw"
+                        loading={index === activeIndex ? "eager" : "lazy"}
                       />
                     </div>
                     <div className="p-5">
