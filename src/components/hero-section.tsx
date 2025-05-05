@@ -109,10 +109,50 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
                 {/* Profile avatars */}
                 <div className="flex items-center mt-6">
                   <div className="flex -space-x-2">
-                    <div className="w-8 h-8 rounded-full border-2 border-white bg-gray-300 overflow-hidden"></div>
-                    <div className="w-8 h-8 rounded-full border-2 border-white bg-gray-300 overflow-hidden"></div>
-                    <div className="w-8 h-8 rounded-full border-2 border-white bg-gray-300 overflow-hidden"></div>
-                    <div className="w-8 h-8 rounded-full border-2 border-white bg-gray-300 overflow-hidden"></div>
+                    <div className="w-8 h-8 rounded-full border-2 border-white bg-gray-300 overflow-hidden">
+                      <Image
+                        src="/images/avatar/1.png"
+                        alt="Professional in suit"
+                        width={100}
+                        height={100}
+                        className="object-contain"
+                        style={{ marginBottom: 0 }}
+                        priority
+                      />
+                    </div>
+                    <div className="w-8 h-8 rounded-full border-2 border-white bg-gray-300 overflow-hidden">
+                      <Image
+                        src="/images/avatar/2.png"
+                        alt="Professional in suit"
+                        width={100}
+                        height={100}
+                        className="object-contain"
+                        style={{ marginBottom: 0 }}
+                        priority
+                      />
+                    </div>
+                    <div className="w-8 h-8 rounded-full border-2 border-white bg-gray-300 overflow-hidden">
+                      <Image
+                        src="/images/avatar/3.png"
+                        alt="Professional in suit"
+                        width={100}
+                        height={100}
+                        className="object-contain"
+                        style={{ marginBottom: 0 }}
+                        priority
+                      />
+                    </div>
+                    <div className="w-8 h-8 rounded-full border-2 border-white bg-gray-300 overflow-hidden">
+                      <Image
+                        src="/images/avatar/4.png"
+                        alt="Professional in suit"
+                        width={100}
+                        height={100}
+                        className="object-contain"
+                        style={{ marginBottom: 0 }}
+                        priority
+                      />
+                    </div>
                   </div>
                   <span
                     className="ml-3 text-sm text-white/80"
