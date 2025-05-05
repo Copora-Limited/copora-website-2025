@@ -4,15 +4,22 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
+import axios from "axios";
 
 interface BlogPost {
   id: string;
   title: string;
   category: string;
   excerpt: string;
+  content: string;
   image: string;
   slug: string;
+  featured_image?: {
+    main_image: string;
+    thumbnail: string;
+  };
+  readTime?: number;
 }
 
 export default function BlogSection() {
@@ -20,58 +27,71 @@ export default function BlogSection() {
   const [isMobile, setIsMobile] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const [hoverIndex, setHoverIndex] = useState<number | null>(null);
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const blogPosts: BlogPost[] = [
-    {
-      id: "1",
-      title:
-        "Unlocking Potential Through Blind Hiring: A New Era in Recruitment",
-      category: "Marketing",
-      excerpt:
-        "Call me crazy, but you cannot market a business without content. The ads your customers see?",
-      image: "/images/blog/content-creation.jpg",
-      slug: "/blog/content-creation",
-    },
-    {
-      id: "2",
-      title: "CAN PLAY IMPROVE PRODUCTIVITY?",
-      category: "Marketing",
-      excerpt:
-        "Call me crazy, but you cannot market a business without content. The ads your customers see?",
-      image: "/images/blog/boardmeeting.jpg",
-      slug: "/blog/remote-work",
-    },
-    {
-      id: "3",
-      title:
-        "The Importance of Upskilling and Reskilling: Empowering Employees and Driving Business Success",
-      category: "Marketing",
-      excerpt:
-        "Call me crazy, but you cannot market a business without content. The ads your customers see?",
-      image: "/images/blog/peopleLauging.jpg",
-      slug: "/blog/team-collaboration",
-    },
-    {
-      id: "4",
-      title: "Content Creation",
-      category: "Marketing",
-      excerpt:
-        "Call me crazy, but you cannot market a business without content. The ads your customers see?",
-      image: "/images/blog/digital-marketing.jpg",
-      slug: "/blog/digital-marketing",
-    },
-    {
-      id: "5",
-      title: "Content Creation",
-      category: "Marketing",
-      excerpt:
-        "Call me crazy, but you cannot market a business without content. The ads your customers see?",
-      image: "/images/blog/future-work.jpg",
-      slug: "/blog/future-work",
-    },
-  ];
+  // Helper functions for text processing
+  const stripHtmlTags = (html: string) => {
+    if (!html) return "";
+    const div = document.createElement("div");
+    div.innerHTML = html;
+    return div.textContent || div.innerText || "";
+  };
+
+  const truncateText = (text: string, maxLines = 2) => {
+    if (!text) return "";
+    const words = text.split(" ");
+    let truncated = "";
+    let lineCount = 0;
+    for (let i = 0; i < words.length; i++) {
+      truncated += words[i] + " ";
+      if ((i + 1) % 10 === 0) lineCount++;
+      if (lineCount >= maxLines) break;
+    }
+    return truncated.trim() + (lineCount >= maxLines ? "..." : "");
+  };
 
   useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        // Use environment variable for API URL or fallback to a default
+        const apiUrl =
+          process.env.NEXT_PUBLIC_COPORA_BLOG_API ||
+          "https://api.example.com/blogs"; // Replace with your actual API endpoint
+
+        const response = await axios.get(apiUrl);
+
+        // Transform the API response to match our BlogPost interface
+        const transformedData = response.data.map((blog: any) => ({
+          id: blog.id || String(Math.random()),
+          title: blog.title || "Untitled Blog Post",
+          category: blog.category || "Marketing",
+          excerpt: stripHtmlTags(blog.content).substring(0, 150) + "...",
+          content: blog.content || "",
+          image:
+            blog.featured_image?.main_image ||
+            "/images/blog/content-creation.jpg",
+          slug: blog.slug
+            ? blog.slug.startsWith("/blog/")
+              ? blog.slug
+              : `/blog/${blog.slug}`
+            : `/blog/${blog.id}`,
+          featured_image: blog.featured_image,
+          readTime: blog.readTime || 5,
+        }));
+
+        setBlogPosts(transformedData);
+      } catch (error) {
+        console.error("Error fetching blog data:", error);
+        // Fallback to static data if API fails
+        setBlogPosts(fallbackBlogPosts);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBlogs();
+
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
@@ -80,6 +100,67 @@ export default function BlogSection() {
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
+
+  // Fallback blog posts in case the API fails
+  const fallbackBlogPosts: BlogPost[] = [
+    {
+      id: "1",
+      title:
+        "Unlocking Potential Through Blind Hiring: A New Era in Recruitment",
+      category: "Marketing",
+      excerpt:
+        "Call me crazy, but you cannot market a business without content. The ads your customers see?",
+      content:
+        "Call me crazy, but you cannot market a business without content. The ads your customers see? That's content. The posts on your social media? That's content too. The words on your website? You guessed it – content.",
+      image: "/images/blog/content-creation.jpg",
+      slug: "/blog/unlocking-potential-through-blind-hiring",
+    },
+    {
+      id: "2",
+      title: "CAN PLAY IMPROVE PRODUCTIVITY?",
+      category: "Marketing",
+      excerpt:
+        "Call me crazy, but you cannot market a business without content. The ads your customers see?",
+      content:
+        "Call me crazy, but you cannot market a business without content. The ads your customers see? That's content. The posts on your social media? That's content too. The words on your website? You guessed it – content.",
+      image: "/images/blog/boardmeeting.jpg",
+      slug: "/blog/can-play-improve-productivity",
+    },
+    {
+      id: "3",
+      title:
+        "The Importance of Upskilling and Reskilling: Empowering Employees and Driving Business Success",
+      category: "Marketing",
+      excerpt:
+        "Call me crazy, but you cannot market a business without content. The ads your customers see?",
+      content:
+        "Call me crazy, but you cannot market a business without content. The ads your customers see? That's content. The posts on your social media? That's content too. The words on your website? You guessed it – content.",
+      image: "/images/blog/peopleLauging.jpg",
+      slug: "/blog/importance-of-upskilling-and-reskilling",
+    },
+    {
+      id: "4",
+      title: "Content Creation",
+      category: "Marketing",
+      excerpt:
+        "Call me crazy, but you cannot market a business without content. The ads your customers see?",
+      content:
+        "Call me crazy, but you cannot market a business without content. The ads your customers see? That's content. The posts on your social media? That's content too. The words on your website? You guessed it – content.",
+      image: "/images/blog/digital-marketing.jpg",
+      slug: "/blog/content-creation",
+    },
+    {
+      id: "5",
+      title: "Future of Work",
+      category: "Marketing",
+      excerpt:
+        "Call me crazy, but you cannot market a business without content. The ads your customers see?",
+      content:
+        "Call me crazy, but you cannot market a business without content. The ads your customers see? That's content. The posts on your social media? That's content too. The words on your website? You guessed it – content.",
+      image: "/images/blog/future-work.jpg",
+      slug: "/blog/future-of-work",
+    },
+  ];
 
   const handleCardClick = (index: number) => {
     if (!isAnimating && activeIndex !== index) {
@@ -105,19 +186,50 @@ export default function BlogSection() {
     }
   };
 
+  if (loading) {
+    return (
+      <section className="py-16 md:py-24 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2
+              className="text-[#0AB5B5] font-lg text-3xl md:text-4xl mb-2"
+              style={{
+                fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
+              }}
+            >
+              Blog
+            </h2>
+            <h2
+              className="text-3xl md:text-4xl font-bold text-[#0a2540] mb-4"
+              style={{
+                fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
+              }}
+            >
+              Recent Insights & Innovations
+            </h2>
+          </div>
+          <div className="flex justify-center items-center h-64">
+            <Loader2 className="h-8 w-8 text-[#0AB5B5] animate-spin" />
+            <span className="ml-2 text-[#0a2540]">Loading blog posts...</span>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="py-16 md:py-24 bg-gray-50">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-12">
-          <h4
-            className="text-[#0AB5B5] font-medium mb-2"
+          <h2
+            className="text-[#0AB5B5] font-lg text-3xl md:text-4xl mb-2"
             style={{
               fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
             }}
           >
             Blog
-          </h4>
+          </h2>
           <h2
             className="text-3xl md:text-4xl font-bold text-[#0a2540] mb-4"
             style={{
@@ -160,8 +272,6 @@ export default function BlogSection() {
                   transition={{ duration: 0.5, ease: "easeInOut" }}
                 >
                   <div className="flex h-[280px]">
-                    {" "}
-                    {/* Fixed height container */}
                     <div
                       className={`p-6 flex flex-col ${
                         isActive || isHovered ? "w-1/2" : "w-full"
@@ -183,7 +293,8 @@ export default function BlogSection() {
                             "Helvetica Neue, Helvetica, Arial, sans-serif",
                         }}
                       >
-                        {post.excerpt}
+                        {post.excerpt ||
+                          stripHtmlTags(post.content).substring(0, 150) + "..."}
                       </p>
                       <Link
                         href={post.slug}
@@ -199,14 +310,18 @@ export default function BlogSection() {
                     <AnimatePresence>
                       {(isActive || isHovered) && (
                         <motion.div
-                          className="relative w-1/2 h-[280px]\"
+                          className="relative w-1/2 h-[280px]"
                           initial={{ opacity: 0, width: 0 }}
                           animate={{ opacity: 1, width: "50%" }}
                           exit={{ opacity: 0, width: 0 }}
                           transition={{ duration: 0.5 }}
                         >
                           <Image
-                            src={post.image || "/placeholder.svg"}
+                            src={
+                              post.featured_image?.main_image ||
+                              post.image ||
+                              "/placeholder.svg"
+                            }
                             alt={post.title}
                             className="object-cover"
                             fill
@@ -274,10 +389,12 @@ export default function BlogSection() {
                 <div key={post.id} className="w-full flex-shrink-0 px-2">
                   <div className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
                     <div className="relative h-48 w-full">
-                      {" "}
-                      {/* Fixed height image container */}
                       <Image
-                        src={post.image || "/placeholder.svg"}
+                        src={
+                          post.featured_image?.thumbnail ||
+                          post.image ||
+                          "/placeholder.svg"
+                        }
                         alt={post.title}
                         fill
                         className="object-cover"
@@ -285,6 +402,13 @@ export default function BlogSection() {
                       />
                     </div>
                     <div className="p-5">
+                      <div className="flex items-center text-sm mb-2">
+                        <span className="text-[#0AB5B5]">{post.category}</span>
+                        <span className="mx-2">•</span>
+                        <span className="text-gray-500">
+                          {post.readTime || 5} min read
+                        </span>
+                      </div>
                       <h3
                         className="text-xl font-bold text-[#0a2540] mb-2"
                         style={{
@@ -301,7 +425,8 @@ export default function BlogSection() {
                             "Helvetica Neue, Helvetica, Arial, sans-serif",
                         }}
                       >
-                        {post.excerpt}
+                        {post.excerpt ||
+                          stripHtmlTags(post.content).substring(0, 100) + "..."}
                       </p>
                       <Link
                         href={post.slug}

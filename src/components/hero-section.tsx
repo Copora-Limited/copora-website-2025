@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { ChevronDownIcon } from "lucide-react";
 
 interface HeroSectionProps {
   onTabChange?: (tab: "hiring" | "freelancers") => void;
@@ -251,7 +251,7 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
       {/* Scroll indicator */}
       <div className="absolute z-20 bottom-24 left-1/2 transform -translate-x-1/2">
         <motion.div
-          className="bg-black bg-opacity-40 rounded-full p-3 cursor-pointer hover:bg-opacity-60 transition-all"
+          className="w-16 h-16 lg:w-20 lg:h-20 bg-[#00000033] rounded-full flex items-center justify-center hover:bg-[#00000060] cursor-pointer"
           onClick={scrollToNextSection}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, y: [0, 10, 0] }}
@@ -264,7 +264,7 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
             },
           }}
         >
-          <ChevronDown className="h-8 w-8 text-white" />
+          <ChevronDownIcon className="w-8 h-8 lg:w-10 lg:h-10 text-white" />
         </motion.div>
       </div>
     </section>

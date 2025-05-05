@@ -277,7 +277,7 @@ export default function TemporaryWorkerSystemPage() {
             >
               <div className="relative h-[400px] md:h-[500px] rounded-xl overflow-hidden shadow-xl">
                 <Image
-                  src="/isometric-freelancers.png"
+                  src="/images/talent-optimization/flexible-work.jpg"
                   alt="Temporary Worker System"
                   fill
                   className="object-cover"

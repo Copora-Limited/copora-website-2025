@@ -15,12 +15,11 @@ import {
 
 export default function Contact() {
   const officeLocations = [
-
     {
       city: "London",
-      address: "10 Canary Wharf, London E14 5AB, United Kingdom",
-      phone: "+44 20 7946 0958",
-      email: "london@copora.com",
+      address: "71-75 Shelton St London WC2H 9JQ United Kingdom",
+      phone: "+44 7742 769816",
+      email: "info@copora.com",
       hours: "Mon-Fri: 9:00 AM - 5:30 PM",
     },
   ];
@@ -86,6 +85,12 @@ export default function Contact() {
                   >
                     Last Name
                   </label>
+                  <Input
+                    type="text"
+                    id="last-name"
+                    placeholder="Enter your last name"
+                    required
+                  />
                 </div>
               </div>
               <div>
@@ -165,16 +170,23 @@ export default function Contact() {
             <div className="mt-8">
               <h3 className="text-xl font-semibold mb-2">Connect With Us</h3>
               <div className="flex space-x-4">
-                <a href="#" className="text-gray-500 hover:text-primary">
+                <a
+                  href="https://www.linkedin.com/company/coporagroup/"
+                  className="text-gray-500 hover:text-primary"
+                >
                   <Linkedin className="h-6 w-6" />
                 </a>
-                <a href="#" className="text-gray-500 hover:text-primary">
-                  <Twitter className="h-6 w-6" />
-                </a>
-                <a href="#" className="text-gray-500 hover:text-primary">
+
+                <a
+                  href="https://www.facebook.com/CoporaGlobalRecruitment/"
+                  className="text-gray-500 hover:text-primary"
+                >
                   <Facebook className="h-6 w-6" />
                 </a>
-                <a href="#" className="text-gray-500 hover:text-primary">
+                <a
+                  href="https://www.instagram.com/copora_recruitment/"
+                  className="text-gray-500 hover:text-primary"
+                >
                   <Instagram className="h-6 w-6" />
                 </a>
               </div>

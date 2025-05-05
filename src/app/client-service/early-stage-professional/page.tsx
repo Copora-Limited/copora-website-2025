@@ -28,35 +28,35 @@ export default function EarlyStageProPage() {
       title: "Fresh Perspectives",
       description:
         "Early-stage professionals bring new ideas and innovative approaches to solve your business challenges.",
-      image: "/images/fresh-perspectives.jpg",
+      image: "/images/talent-optimization/fresh-perspective.jpg",
     },
     {
       id: "2",
       title: "Growth Potential",
       description:
         "Invest in talent that can grow with your company and adapt to evolving business needs.",
-      image: "/images/growth-potential.jpg",
+      image: "/images/talent-optimization/growth-potential.jpg",
     },
     {
       id: "3",
       title: "Digital Natives",
       description:
         "Leverage the natural digital fluency of professionals who grew up in the technology era.",
-      image: "/images/digital-natives.jpg",
+      image: "/images/talent-optimization/digital-natives.jpg",
     },
     {
       id: "4",
       title: "Cost Effective",
       description:
         "Build your workforce strategically with talent that offers excellent value and long-term ROI.",
-      image: "/images/cost-effective.jpg",
+      image: "/images/talent-optimization/cost-effective.jpg",
     },
     {
       id: "5",
       title: "Adaptability",
       description:
         "Early-stage professionals typically demonstrate high adaptability to new environments and challenges.",
-      image: "/images/adaptability.jpg",
+      image: "/images/talent-optimization/adaptability.jpg",
     },
   ];
 
@@ -66,25 +66,25 @@ export default function EarlyStageProPage() {
       title: "Talent Identification",
       content:
         "We identify promising early-stage professionals with the right mix of skills, attitude, and potential to thrive in your organization.",
-      image: "/images/talent-optimization/glasses-image.png",
+      image: "/images/talent-optimization/talent-identification.jpg",
     },
     {
       title: "Customized Training",
       content:
         "We provide tailored training programs to equip early-stage professionals with the specific skills needed for your business.",
-      image: "/images/talent-optimization/conference.png",
+      image: "/images/talent-optimization/customized-training.jpg",
     },
     {
       title: "Mentorship Programs",
       content:
         "Our mentorship frameworks help accelerate the development of early-stage talent within your organization.",
-      image: "/images/talent-optimization/hands-together.png",
+      image: "/images/talent-optimization/mentorship-program.jpg",
     },
     {
       title: "Career Path Development",
       content:
         "We help design clear career progression paths to retain and motivate your early-stage professionals.",
-      image: "/images/talent-optimization/lady-smiling.png",
+      image: "/images/talent-optimization/career-path-development.jpg",
     },
   ];
 
@@ -172,7 +172,7 @@ export default function EarlyStageProPage() {
       {/* Full-width Image Section */}
       <section className="relative w-full py-24 bg-cover bg-center flex items-center justify-center">
         <Image
-          src="/images/early-stage-bg.png"
+          src="/images/peoplemeeting.jpg"
           alt="Young professionals collaborating"
           fill
           className="object-cover"
