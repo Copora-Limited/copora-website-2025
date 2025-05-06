@@ -2,6 +2,8 @@ import type React from "react";
 import type { Metadata } from "next";
 import "./global.css";
 import { Toaster } from "@/components/ui/toaster";
+import CookieConsent from "@/components/cookie-consent";
+
 export const metadata: Metadata = {
   title: "Copora - Talent Solutions",
   description:
@@ -36,7 +38,11 @@ export default function RootLayout({
         `}</style>
       </head>
       <body>
-        {children} <Toaster />
+        <>
+          {children}
+          <Toaster />
+          <CookieConsent />
+        </>
       </body>
     </html>
   );
