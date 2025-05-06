@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 "use client";
 
 import { useRef } from "react";
@@ -9,13 +8,50 @@ import { ChevronDown } from "lucide-react";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import FaqCareer from "@/components/faq-career";
+import AudienceTabs from "@/components/audience-tabs";
+import HorizontalScroll from "@/components/horizontal-scroll";
+import type { ScrollItem } from "@/components/horizontal-scroll";
+
 export default function CareerEducationPage() {
   const nextSectionRef = useRef<HTMLDivElement>(null);
+  const programOverviewRef = useRef<HTMLDivElement>(null);
 
   // Function to scroll to the next section
   const scrollToNextSection = () => {
     nextSectionRef.current?.scrollIntoView({ behavior: "smooth" });
   };
+
+  // Horizontal scroll data
+  const horizontalScrollData: ScrollItem[] = [
+    {
+      stat: "78%",
+      description:
+        "of students feel unprepared for the job market after graduation",
+    },
+    {
+      stat: "65%",
+      description: "of jobs that today's students will perform don't exist yet",
+    },
+    {
+      stat: "92%",
+      description: "of employers value skills over degree qualifications",
+    },
+    {
+      stat: "3.5x",
+      description:
+        "higher career satisfaction for those who received career guidance",
+    },
+    {
+      stat: "40%",
+      description:
+        "reduction in job-hopping for graduates with career mentorship",
+    },
+    {
+      stat: "87%",
+      description:
+        "of students want more practical career preparation in education",
+    },
+  ];
 
   // Define image paths for the parallax columns
   const images = [
@@ -50,7 +86,7 @@ export default function CareerEducationPage() {
       <Header />
 
       {/* Parallax Hero Section */}
-      <section className="relative h-screen w-full overflow-hidden pt-[32px]">
+      <section className="relative h-screen w-full overflow-hidden pt-[72px]">
         {/* Parallax Image Columns */}
         <div className="absolute inset-0 grid grid-cols-5 gap-0">
           {columns.map((columnImages, colIndex) => (
@@ -61,7 +97,7 @@ export default function CareerEducationPage() {
               animate={{ y: colIndex % 2 === 0 ? "-50%" : "0%" }}
               transition={{
                 duration: 50,
-                repeat: Infinity,
+                repeat: Number.POSITIVE_INFINITY,
                 repeatType: "reverse",
                 ease: "linear",
               }}
@@ -106,8 +142,9 @@ export default function CareerEducationPage() {
             transition={{ duration: 0.8, delay: 0.4 }}
             style={{ fontFamily: "var(--font-regular)" }}
           >
-            Whether you're a student, professional organisation or educational
-            authority, come, let's equip the workforce of the future together.
+            Whether you&apos;re a student, professional organisation or
+            educational authority, come, let&apos;s equip the workforce of the
+            future together.
           </motion.p>
 
           <motion.div
@@ -120,7 +157,7 @@ export default function CareerEducationPage() {
               className="inline-flex items-center justify-center px-8 py-3 bg-[#0AB5B5] rounded-full text-white hover:bg-[#099999] transition-colors duration-300"
               style={{ fontFamily: "var(--font-medium)" }}
             >
-              Let's talk
+              Let&apos;s talk
             </Link>
           </motion.div>
         </div>
@@ -134,7 +171,11 @@ export default function CareerEducationPage() {
             animate={{ opacity: 1, y: [0, 10, 0] }}
             transition={{
               opacity: { delay: 1, duration: 1 },
-              y: { repeat: Infinity, duration: 1.5, ease: "easeInOut" },
+              y: {
+                repeat: Number.POSITIVE_INFINITY,
+                duration: 1.5,
+                ease: "easeInOut",
+              },
             }}
           >
             <ChevronDown className="h-8 w-8 text-white" />
@@ -143,7 +184,7 @@ export default function CareerEducationPage() {
       </section>
 
       {/* Program Overview Section */}
-      <section ref={nextSectionRef} className="py-16 md:py-24 bg-white">
+      <section ref={programOverviewRef} className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row gap-12">
             <div className="w-full md:w-1/3">
@@ -182,12 +223,18 @@ export default function CareerEducationPage() {
                     For Students
                   </h3>
                   <p
-                    className="text-gray-600"
+                    className="text-gray-600 mb-4"
                     style={{ fontFamily: "var(--font-regular)" }}
                   >
                     Discover career paths, develop essential skills, and connect
                     with potential employers.
                   </p>
+                  <button
+                    className="bg-[#0AB5B5] hover:bg-[#099999] text-white px-4 py-2 rounded-full text-sm transition-colors duration-200"
+                    style={{ fontFamily: "var(--font-medium)" }}
+                  >
+                    Start survey
+                  </button>
                 </div>
                 <div className="bg-gray-50 p-6 rounded-lg">
                   <h3
@@ -197,12 +244,18 @@ export default function CareerEducationPage() {
                     For Professionals
                   </h3>
                   <p
-                    className="text-gray-600"
+                    className="text-gray-600 mb-4"
                     style={{ fontFamily: "var(--font-regular)" }}
                   >
                     Upskill, reskill, and expand your professional network to
                     advance your career.
                   </p>
+                  <button
+                    className="bg-[#0AB5B5] hover:bg-[#099999] text-white px-4 py-2 rounded-full text-sm transition-colors duration-200"
+                    style={{ fontFamily: "var(--font-medium)" }}
+                  >
+                    Start survey
+                  </button>
                 </div>
                 <div className="bg-gray-50 p-6 rounded-lg">
                   <h3
@@ -212,12 +265,18 @@ export default function CareerEducationPage() {
                     For Organizations
                   </h3>
                   <p
-                    className="text-gray-600"
+                    className="text-gray-600 mb-4"
                     style={{ fontFamily: "var(--font-regular)" }}
                   >
                     Partner with us to develop talent pipelines and support
                     workforce development initiatives.
                   </p>
+                  <button
+                    className="bg-[#0AB5B5] hover:bg-[#099999] text-white px-4 py-2 rounded-full text-sm transition-colors duration-200"
+                    style={{ fontFamily: "var(--font-medium)" }}
+                  >
+                    Start survey
+                  </button>
                 </div>
               </div>
             </div>
@@ -225,60 +284,134 @@ export default function CareerEducationPage() {
         </div>
       </section>
 
-      {/* Key Features Section */}
-      <section className="py-16 md:py-24 bg-gray-100">
+      {/* Career Guidance Section with Horizontal Scroll */}
+      <section
+        ref={nextSectionRef}
+        className="bg-[#143386] text-white px-4 py-12 md:py-16 md:px-10 overflow-hidden"
+      >
+        <div className="container mx-auto">
+          <div className="flex flex-col-reverse md:flex-row justify-between items-center gap-6 md:gap-10 mb-8 md:mb-12">
+            <div className="flex-1 justify-start md:max-w-[623px]">
+              <h2
+                className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4"
+                style={{ fontFamily: "var(--font-bold)" }}
+              >
+                Young People Deserve Better Career Guidance
+              </h2>
+              <p
+                className="text-sm md:text-lg"
+                style={{ fontFamily: "var(--font-regular)" }}
+              >
+                Whether you&apos;re a student, professional organization or
+                educational authority, come, let&apos;s equip the workforce of
+                the future together.
+              </p>
+            </div>
+            <div className="md:max-w-[393px] flex justify-end w-full md:w-auto">
+              <div className="relative w-full h-[200px] md:w-[393px] md:h-[300px] bg-[#004176] bg-blend-luminosity rounded-lg overflow-hidden">
+                <Image
+                  src="/videos/globe.gif"
+                  alt="Globe"
+                  fill
+                  className="object-cover mix-blend-luminosity"
+                />
+              </div>
+            </div>
+          </div>
+
+          <HorizontalScroll data={horizontalScrollData} />
+        </div>
+      </section>
+
+      {/* Audience Tabs Section */}
+      <AudienceTabs />
+
+      {/* Our Approach Section */}
+      <section className="py-16 md:py-24 bg-[#f8f9fa]">
         <div className="container mx-auto px-6">
           <h2
             className="text-3xl md:text-4xl font-bold text-[#0a2540] mb-12 text-center"
             style={{ fontFamily: "var(--font-bold)" }}
           >
-            Key Features
+            Our Approach
           </h2>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                title: "Workshops & Training",
-                description:
-                  "Interactive sessions to build technical and soft skills tailored to industry needs.",
-              },
-              {
-                title: "Mentorship Programs",
-                description:
-                  "One-on-one guidance from experienced professionals to navigate career paths.",
-              },
-              {
-                title: "Industry Partnerships",
-                description:
-                  "Collaborations with leading companies for real-world projects and internships.",
-              },
-              {
-                title: "Career Resources",
-                description:
-                  "Access to tools, templates, and guides for resumes, interviews, and more.",
-              },
-            ].map((feature, index) => (
-              <motion.div
-                key={index}
-                className="bg-white p-6 rounded-lg shadow-md"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-                viewport={{ once: true }}
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <div className="w-12 h-12 bg-[#0AB5B5] rounded-full flex items-center justify-center text-white mb-4">
+                <span className="text-xl font-bold">1</span>
+              </div>
+              <h3
+                className="text-xl font-bold text-[#0a2540] mb-3"
+                style={{ fontFamily: "var(--font-bold)" }}
               >
-                <h3
-                  className="text-xl font-bold text-[#0a2540] mb-3"
-                  style={{ fontFamily: "var(--font-bold)" }}
-                >
-                  {feature.title}
-                </h3>
-                <p
-                  className="text-gray-600"
-                  style={{ fontFamily: "var(--font-regular)" }}
-                >
-                  {feature.description}
-                </p>
-              </motion.div>
-            ))}
+                Assess
+              </h3>
+              <p
+                className="text-gray-600"
+                style={{ fontFamily: "var(--font-regular)" }}
+              >
+                We begin by understanding your unique needs, goals, and current
+                skill levels through comprehensive assessments.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <div className="w-12 h-12 bg-[#0AB5B5] rounded-full flex items-center justify-center text-white mb-4">
+                <span className="text-xl font-bold">2</span>
+              </div>
+              <h3
+                className="text-xl font-bold text-[#0a2540] mb-3"
+                style={{ fontFamily: "var(--font-bold)" }}
+              >
+                Design
+              </h3>
+              <p
+                className="text-gray-600"
+                style={{ fontFamily: "var(--font-regular)" }}
+              >
+                We create customized learning pathways that align with industry
+                demands and your career aspirations.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <div className="w-12 h-12 bg-[#0AB5B5] rounded-full flex items-center justify-center text-white mb-4">
+                <span className="text-xl font-bold">3</span>
+              </div>
+              <h3
+                className="text-xl font-bold text-[#0a2540] mb-3"
+                style={{ fontFamily: "var(--font-bold)" }}
+              >
+                Implement
+              </h3>
+              <p
+                className="text-gray-600"
+                style={{ fontFamily: "var(--font-regular)" }}
+              >
+                We deliver engaging, practical learning experiences that combine
+                theory with real-world application.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <div className="w-12 h-12 bg-[#0AB5B5] rounded-full flex items-center justify-center text-white mb-4">
+                <span className="text-xl font-bold">4</span>
+              </div>
+              <h3
+                className="text-xl font-bold text-[#0a2540] mb-3"
+                style={{ fontFamily: "var(--font-bold)" }}
+              >
+                Evaluate
+              </h3>
+              <p
+                className="text-gray-600"
+                style={{ fontFamily: "var(--font-regular)" }}
+              >
+                We continuously measure progress and outcomes, making
+                adjustments to ensure optimal results.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -387,6 +520,7 @@ export default function CareerEducationPage() {
           <FaqCareer />
         </div>
       </section>
+
       <Footer />
     </main>
   );
