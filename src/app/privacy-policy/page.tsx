@@ -150,12 +150,12 @@ export default function PrivacyPolicy() {
             practices, please contact us at:
           </p>
           <p className="mt-2">
-            <strong>Email:</strong> privacy@copora.com
+            <strong>Email:</strong> info@copora.com
             <br />
-            <strong>Phone:</strong> +1 (555) 123-4567
+            <strong>Phone:</strong> +44 7742 769816
             <br />
-            <strong>Address:</strong> 123 Main Street, Suite 100, Anytown, CA
-            12345
+            <strong>Address:</strong> 71-75 Shelton St London WC2H 9JQ United
+            Kingdom
           </p>
         </div>
       </div>
