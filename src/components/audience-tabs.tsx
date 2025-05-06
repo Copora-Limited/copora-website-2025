@@ -1,26 +1,28 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Image from "next/image"
-import { motion } from "framer-motion"
-import { cn } from "@/lib/utils"
+import { useState } from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 type AudienceTab = {
-  id: string
-  label: string
-  title: string
-  subtitle: string
-  bulletPoints: string[]
-  conclusion: string
-  imageSrc: string
-}
+  id: string;
+  label: string;
+  title: string;
+  subtitle: string;
+  bulletPoints: string[];
+  conclusion: string;
+  imageSrc: string;
+  surveyUrl: string;
+};
 
 const audienceTabs: AudienceTab[] = [
   {
     id: "companies",
     label: "For Companies",
     title: "Shaping the Future of Career Education",
-    subtitle: "Companies that invest in early career programs see real results, like:",
+    subtitle:
+      "Companies that invest in early career programs see real results, like:",
     bulletPoints: [
       "Up to 65% reduction in recruitment costs through apprenticeship programs.",
       "Higher retention rates, creating a more stable and loyal workforce.",
@@ -29,6 +31,7 @@ const audienceTabs: AudienceTab[] = [
     conclusion:
       "Your insights can make a difference in shaping a future where students are equipped for the workforce, and businesses can access skilled, motivated professionals.",
     imageSrc: "/images/career/business-professional.png",
+    surveyUrl: "https://www.surveymonkey.com/r/SFLHCLL",
   },
   {
     id: "educators",
@@ -44,12 +47,14 @@ const audienceTabs: AudienceTab[] = [
     conclusion:
       "Educators are cornerstone of this journey, your experiences and suggestions are invaluable to creating an impactful program that will empower the next generation.",
     imageSrc: "/images/career/educator-professional.png",
+    surveyUrl: "https://www.surveymonkey.com/r/SFLHCLL",
   },
   {
     id: "students",
     label: "For Students",
     title: "Shaping Career Education with Your Feedback",
-    subtitle: "Whether you're certain of your career path or still exploring, your voice matters. Our program offers:",
+    subtitle:
+      "Whether you're certain of your career path or still exploring, your voice matters. Our program offers:",
     bulletPoints: [
       "Career Clarity: Helping you explore different industries and career paths.",
       "Empowerment: Giving you the confidence to make informed decisions",
@@ -59,13 +64,15 @@ const audienceTabs: AudienceTab[] = [
     conclusion:
       "Share your challenges, experiences, and suggestions. Together, we can create a future where career paths are clearer and more accessible for everyone.",
     imageSrc: "/images/career/student-professional.png",
+    surveyUrl: "https://www.surveymonkey.com/r/SFLHCLL",
   },
-]
+];
 
 export default function AudienceTabs() {
-  const [activeTab, setActiveTab] = useState("companies")
+  const [activeTab, setActiveTab] = useState("companies");
 
-  const activeTabData = audienceTabs.find((tab) => tab.id === activeTab) || audienceTabs[0]
+  const activeTabData =
+    audienceTabs.find((tab) => tab.id === activeTab) || audienceTabs[0];
 
   return (
     <section
@@ -88,7 +95,7 @@ export default function AudienceTabs() {
                 "px-6 py-3 text-sm md:text-base font-medium transition-colors duration-200 mr-2",
                 activeTab === tab.id
                   ? "bg-white text-[#002147] rounded-t-md"
-                  : "text-white/80 hover:text-white hover:bg-white/10 rounded-t-md",
+                  : "text-white/80 hover:text-white hover:bg-white/10 rounded-t-md"
               )}
             >
               {tab.label}
@@ -99,7 +106,9 @@ export default function AudienceTabs() {
         {/* Content */}
         <div className="flex flex-col md:flex-row">
           <div className="w-full md:w-1/2 md:pr-12 pb-16">
-            <div className="text-sm uppercase tracking-wider mb-2">Research Phase</div>
+            <div className="text-sm uppercase tracking-wider mb-2">
+              Research Phase
+            </div>
             <motion.h2
               key={`title-${activeTab}`}
               initial={{ opacity: 0, y: 20 }}
@@ -132,7 +141,10 @@ export default function AudienceTabs() {
               {activeTabData.bulletPoints.map((point, index) => (
                 <div key={index} className="flex items-start">
                   <div className="text-[#0AB5B5] mr-2">►</div>
-                  <p className="text-white/90" style={{ fontFamily: "var(--font-regular)" }}>
+                  <p
+                    className="text-white/90"
+                    style={{ fontFamily: "var(--font-regular)" }}
+                  >
                     {point}
                   </p>
                 </div>
@@ -150,15 +162,18 @@ export default function AudienceTabs() {
               {activeTabData.conclusion}
             </motion.p>
 
-            <motion.button
+            <motion.a
               key={`button-${activeTab}`}
+              href={activeTabData.surveyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="bg-black hover:bg-black/80 text-white px-6 py-3 rounded-full transition-colors duration-200 mb-8"
+              className="inline-block bg-black hover:bg-black/80 text-white px-6 py-3 rounded-full transition-colors duration-200 mb-8"
             >
               Start survey
-            </motion.button>
+            </motion.a>
           </div>
 
           <div className="w-full md:w-1/2 mt-8 md:mt-0 relative flex items-end">
@@ -183,5 +198,5 @@ export default function AudienceTabs() {
         </div>
       </div>
     </section>
-  )
+  );
 }

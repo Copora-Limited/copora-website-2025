@@ -229,12 +229,13 @@ export default function CareerEducationPage() {
                     Discover career paths, develop essential skills, and connect
                     with potential employers.
                   </p>
-                  <button
+                  <Link
+                    href="https://www.surveymonkey.com/r/SF83KSC"
                     className="bg-[#0AB5B5] hover:bg-[#099999] text-white px-4 py-2 rounded-full text-sm transition-colors duration-200"
                     style={{ fontFamily: "var(--font-medium)" }}
                   >
                     Start survey
-                  </button>
+                  </Link>
                 </div>
                 <div className="bg-gray-50 p-6 rounded-lg">
                   <h3
@@ -250,12 +251,13 @@ export default function CareerEducationPage() {
                     Upskill, reskill, and expand your professional network to
                     advance your career.
                   </p>
-                  <button
+                  <Link
+                    href="https://www.surveymonkey.com/r/SFLHCLL"
                     className="bg-[#0AB5B5] hover:bg-[#099999] text-white px-4 py-2 rounded-full text-sm transition-colors duration-200"
                     style={{ fontFamily: "var(--font-medium)" }}
                   >
                     Start survey
-                  </button>
+                  </Link>
                 </div>
                 <div className="bg-gray-50 p-6 rounded-lg">
                   <h3
@@ -271,12 +273,13 @@ export default function CareerEducationPage() {
                     Partner with us to develop talent pipelines and support
                     workforce development initiatives.
                   </p>
-                  <button
+                  <Link
+                    href="https://www.surveymonkey.com/r/SFLHCLL"
                     className="bg-[#0AB5B5] hover:bg-[#099999] text-white px-4 py-2 rounded-full text-sm transition-colors duration-200"
                     style={{ fontFamily: "var(--font-medium)" }}
                   >
                     Start survey
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
