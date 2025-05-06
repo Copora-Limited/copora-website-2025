@@ -86,7 +86,7 @@ export default function CareerEducationPage() {
       <Header />
 
       {/* Parallax Hero Section */}
-      <section className="relative h-screen w-full overflow-hidden pt-[72px]">
+      <section className="relative h-screen w-full overflow-hidden ">
         {/* Parallax Image Columns */}
         <div className="absolute inset-0 grid grid-cols-5 gap-0">
           {columns.map((columnImages, colIndex) => (
@@ -287,7 +287,7 @@ export default function CareerEducationPage() {
       {/* Career Guidance Section with Horizontal Scroll */}
       <section
         ref={nextSectionRef}
-        className="bg-[#143386] text-white px-4 py-12 md:py-16 md:px-10 overflow-hidden"
+        className="bg-[#143386] bg-blend-luminosity  text-white px-4 py-12 md:py-16 md:px-10 overflow-hidden"
       >
         <div className="container mx-auto">
           <div className="flex flex-col-reverse md:flex-row justify-between items-center gap-6 md:gap-10 mb-8 md:mb-12">
@@ -308,12 +308,12 @@ export default function CareerEducationPage() {
               </p>
             </div>
             <div className="md:max-w-[393px] flex justify-end w-full md:w-auto">
-              <div className="relative w-full h-[200px] md:w-[393px] md:h-[300px] bg-[#004176] bg-blend-luminosity rounded-lg overflow-hidden">
+              <div className="relative w-full h-[200px] md:w-[393px] md:h-[300px]  rounded-lg overflow-hidden">
                 <Image
                   src="/videos/globe.gif"
                   alt="Globe"
                   fill
-                  className="object-cover mix-blend-luminosity"
+                  className="object-cover "
                 />
               </div>
             </div>
