@@ -225,7 +225,7 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
           >
             {activeTab === "hiring" ? (
               <Image
-                src="/images/suit-2.png"
+                src="/images/suit-1.png"
                 alt="Professional in suit"
                 width={500}
                 height={600}
