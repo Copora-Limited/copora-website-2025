@@ -45,9 +45,9 @@ export default function TemporaryWorkerSystemPage() {
     },
     {
       id: "2",
-      title: "Weekly Payments",
+      title: "Timely Payments",
       description:
-        "Get paid weekly for all completed assignments through our secure payment system.",
+        "Get paid on time for all completed assignments through our secure payment system.",
       icon: <DollarSign className="h-6 w-6 text-[#0AB5B5]" />,
     },
     {
