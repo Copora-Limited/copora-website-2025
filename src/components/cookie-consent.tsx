@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client"
 
 import { useState, useEffect } from "react"
@@ -112,43 +113,48 @@ export default function CookieConsent() {
     })
   }
 
-  // Cookie consent banner
+  // Cookie consent banner - positioned on the right side
   const consentBanner = (
-    <div className="fixed bottom-0 left-0 right-0 bg-white p-4 shadow-lg z-50 border-t border-gray-200">
-      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
-        <div className="flex-1 pr-4 mb-4 md:mb-0">
-          <p className="text-sm text-gray-700">
-            By clicking "Accept", you agree to the storing of cookies on your device to enhance site navigation, analyze
-            site usage, and assist in our marketing efforts.{" "}
-            <a href="/privacy-policy" className="text-blue-600 underline">
-              View our Privacy Policy
-            </a>{" "}
-            for more information.
-          </p>
-        </div>
-        <div className="flex items-center space-x-2">
-          <button
-            onClick={handlePreferencesClick}
-            className="px-4 py-2 text-sm border border-gray-300 rounded-md hover:bg-gray-50"
-          >
-            Preferences
-          </button>
-          <button
-            onClick={handleDecline}
-            className="px-4 py-2 text-sm border border-gray-300 rounded-md hover:bg-gray-50"
-          >
-            Decline
-          </button>
-          <button onClick={handleAccept} className="px-4 py-2 text-sm bg-black text-white rounded-md hover:bg-gray-800">
-            Accept
-          </button>
+    <div className="fixed bottom-4 right-4 z-50 max-w-sm bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
+      <div className="p-4">
+        <div className="flex justify-between items-start mb-3">
+          <h3 className="font-semibold text-gray-800">Cookie Notice</h3>
           <button
             onClick={() => setShowBanner(false)}
-            className="p-1 text-gray-500 hover:text-gray-700"
+            className="p-1 text-gray-500 hover:text-gray-700 -mt-1"
             aria-label="Close"
           >
             <X size={18} />
           </button>
+        </div>
+        <p className="text-sm text-gray-700 mb-4">
+          By clicking "Accept", you agree to the storing of cookies on your device to enhance site navigation, analyze
+          site usage, and assist in our marketing efforts.{" "}
+          <a href="/privacy-policy" className="text-blue-600 underline">
+            View our Privacy Policy
+          </a>
+        </p>
+        <div className="flex flex-col space-y-2">
+          <button
+            onClick={handleAccept}
+            className="w-full px-4 py-2 text-sm bg-black text-white rounded-md hover:bg-gray-800"
+          >
+            Accept
+          </button>
+          <div className="flex space-x-2">
+            <button
+              onClick={handlePreferencesClick}
+              className="flex-1 px-4 py-2 text-sm border border-gray-300 rounded-md hover:bg-gray-50"
+            >
+              Preferences
+            </button>
+            <button
+              onClick={handleDecline}
+              className="flex-1 px-4 py-2 text-sm border border-gray-300 rounded-md hover:bg-gray-50"
+            >
+              Decline
+            </button>
+          </div>
         </div>
       </div>
     </div>
