@@ -194,16 +194,48 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
                 <div className="flex items-center mt-6">
                   <div className="flex space-x-2">
                     <div className="w-8 h-8 rounded-full bg-white/90 flex items-center justify-center">
-                      <span className="text-xs text-gray-800 font-bold">S</span>
+                      <Image
+                        src="/images/avatar/company-1.png"
+                        alt="Company 1"
+                        width={100}
+                        height={100}
+                        className="object-contain"
+                        style={{ marginBottom: 0 }}
+                        priority
+                      />
                     </div>
                     <div className="w-8 h-8 rounded-full bg-white/90 flex items-center justify-center">
-                      <span className="text-xs text-gray-800 font-bold">G</span>
+                      <Image
+                        src="/images/avatar/company-2.png"
+                        alt="Company 2"
+                        width={100}
+                        height={100}
+                        className="object-contain"
+                        style={{ marginBottom: 0 }}
+                        priority
+                      />
                     </div>
                     <div className="w-8 h-8 rounded-full bg-white/90 flex items-center justify-center">
-                      <span className="text-xs text-gray-800 font-bold">P</span>
+                      <Image
+                        src="/images/avatar/company-3.png"
+                        alt="Company 3"
+                        width={100}
+                        height={100}
+                        className="object-contain"
+                        style={{ marginBottom: 0 }}
+                        priority
+                      />
                     </div>
                     <div className="w-8 h-8 rounded-full bg-white/90 flex items-center justify-center">
-                      <span className="text-xs text-gray-800 font-bold">M</span>
+                      <Image
+                        src="/images/avatar/company-4.png"
+                        alt="Company 4"
+                        width={100}
+                        height={100}
+                        className="object-contain"
+                        style={{ marginBottom: 0 }}
+                        priority
+                      />
                     </div>
                   </div>
                   <span
@@ -225,7 +257,7 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
           >
             {activeTab === "hiring" ? (
               <Image
-                src="/images/suit-1.png"
+                src="/images/career/business-professional.png"
                 alt="Professional in suit"
                 width={500}
                 height={600}
