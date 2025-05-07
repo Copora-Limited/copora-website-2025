@@ -177,9 +177,7 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
                   className="text-white/80 mb-8 max-w-md"
                   style={{ fontFamily: "var(--font-regular)" }}
                 >
-                  At Copora, we empower your business by providing flexible,
-                  cost-effective, and scalable contingent staffing solutions. We
-                  understand your unique challenges.
+                  At Copora, we provide you with the right opportunities to take your career to the next level.
                 </p>
 
                 <Link
