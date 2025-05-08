@@ -1,11 +1,12 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { ChevronLeft, ChevronRight, Loader2, AlertCircle } from "lucide-react";
 import { fetchWithCache } from "@/lib/api-cache";
-import ImageWithFallback from "@/components/image-with-fallback";
 
 interface BlogPost {
   id: string;
@@ -22,6 +23,15 @@ interface BlogPost {
   readTime?: number;
 }
 
+// Add these placeholder images to ensure we always have fallbacks
+const PLACEHOLDER_IMAGES = [
+  "/images/placeholder.png?text=Blog+Post+1",
+  "/images/placeholder.png?text=Blog+Post+2",
+  "/images/placeholder.png?text=Blog+Post+3",
+  "/images/placeholder.png?text=Blog+Post+4",
+  "/images/placeholder.png?text=Blog+Post+5",
+];
+
 export default function BlogSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
@@ -29,6 +39,12 @@ export default function BlogSection() {
   const [hoverIndex, setHoverIndex] = useState<number | null>(null);
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
+  const [imageLoadErrors, setImageLoadErrors] = useState<
+    Record<string, boolean>
+  >({});
+
+  // Debug mode - set to true to see console logs for image loading
+  const DEBUG = true;
 
   // Helper functions for text processing
   const stripHtmlTags = (html: string) => {
@@ -51,6 +67,18 @@ export default function BlogSection() {
     return truncated.trim() + (lineCount >= maxLines ? "..." : "");
   };
 
+  // Function to validate and fix image URLs
+  const validateImageUrl = (url: string | undefined, index: number): string => {
+    if (!url) return PLACEHOLDER_IMAGES[index % PLACEHOLDER_IMAGES.length];
+
+    // Check if URL is relative and doesn't start with /
+    if (!url.startsWith("http") && !url.startsWith("/")) {
+      return `/${url}`;
+    }
+
+    return url;
+  };
+
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
@@ -66,28 +94,50 @@ export default function BlogSection() {
           10 * 60 * 1000
         );
 
+        if (DEBUG) {
+          console.log("[BlogSection] API Response:", response);
+        }
+
         // Transform the API response to match our BlogPost interface
-        const transformedData = response.map((blog: any) => ({
-          id: blog.id || String(Math.random()),
-          title: blog.title || "Untitled Blog Post",
-          category: blog.category || "Marketing",
-          excerpt: stripHtmlTags(blog.content).substring(0, 150) + "...",
-          content: blog.content || "",
-          image:
-            blog.featured_image?.main_image ||
-            "/images/blog/content-creation.jpg",
-          slug: blog.slug
-            ? blog.slug.startsWith("/blog/")
-              ? blog.slug
-              : `/blog/${blog.slug}`
-            : `/blog/${blog.id}`,
-          featured_image: blog.featured_image,
-          readTime: blog.readTime || 5,
-        }));
+        const transformedData = response.map((blog: any, index: number) => {
+          // Validate and fix image URLs
+          const mainImage = validateImageUrl(
+            blog.featured_image?.main_image,
+            index
+          );
+
+          const thumbnailImage = validateImageUrl(
+            blog.featured_image?.thumbnail || blog.image,
+            index
+          );
+
+          return {
+            id: blog.id || String(Math.random()),
+            title: blog.title || "Untitled Blog Post",
+            category: blog.category || "Marketing",
+            excerpt: stripHtmlTags(blog.content).substring(0, 150) + "...",
+            content: blog.content || "",
+            image: thumbnailImage,
+            slug: blog.slug
+              ? blog.slug.startsWith("/blog/")
+                ? blog.slug
+                : `/blog/${blog.slug}`
+              : `/blog/${blog.id}`,
+            featured_image: {
+              main_image: mainImage,
+              thumbnail: thumbnailImage,
+            },
+            readTime: blog.readTime || 5,
+          };
+        });
+
+        if (DEBUG) {
+          console.log("[BlogSection] Transformed Data:", transformedData);
+        }
 
         setBlogPosts(transformedData);
       } catch (error) {
-        console.error("Error fetching blog data:", error);
+        console.error("[BlogSection] Error fetching blog data:", error);
         // Fallback to static data if API fails
         setBlogPosts(fallbackBlogPosts);
       } finally {
@@ -117,8 +167,12 @@ export default function BlogSection() {
         "Call me crazy, but you cannot market a business without content. The ads your customers see?",
       content:
         "Call me crazy, but you cannot market a business without content. The ads your customers see? That's content. The posts on your social media? That's content too. The words on your website? You guessed it – content.",
-      image: "/images/blog/content-creation.jpg",
+      image: "/images/blog/content-creation.png",
       slug: "/blog/unlocking-potential-through-blind-hiring",
+      featured_image: {
+        main_image: "/images/blog/content-creation.png",
+        thumbnail: "/images/blog/content-creation.png",
+      },
     },
     {
       id: "2",
@@ -128,8 +182,12 @@ export default function BlogSection() {
         "Call me crazy, but you cannot market a business without content. The ads your customers see?",
       content:
         "Call me crazy, but you cannot market a business without content. The ads your customers see? That's content. The posts on your social media? That's content too. The words on your website? You guessed it – content.",
-      image: "/images/blog/boardmeeting.jpg",
+      image: "/images/blog/boardmeeting.png",
       slug: "/blog/can-play-improve-productivity",
+      featured_image: {
+        main_image: "/images/blog/boardmeeting.png",
+        thumbnail: "/images/blog/boardmeeting.png",
+      },
     },
     {
       id: "3",
@@ -142,6 +200,10 @@ export default function BlogSection() {
         "Call me crazy, but you cannot market a business without content. The ads your customers see? That's content. The posts on your social media? That's content too. The words on your website? You guessed it – content.",
       image: "/images/blog/peopleLauging.jpg",
       slug: "/blog/importance-of-upskilling-and-reskilling",
+      featured_image: {
+        main_image: "/images/blog/peopleLauging.jpg",
+        thumbnail: "/images/blog/peopleLauging.jpg",
+      },
     },
     {
       id: "4",
@@ -151,8 +213,12 @@ export default function BlogSection() {
         "Call me crazy, but you cannot market a business without content. The ads your customers see?",
       content:
         "Call me crazy, but you cannot market a business without content. The ads your customers see? That's content. The posts on your social media? That's content too. The words on your website? You guessed it – content.",
-      image: "/images/blog/digital-marketing.jpg",
+      image: "/images/blog/digital-marketing.png",
       slug: "/blog/content-creation",
+      featured_image: {
+        main_image: "/images/blog/digital-marketing.png",
+        thumbnail: "/images/blog/digital-marketing.png",
+      },
     },
     {
       id: "5",
@@ -162,8 +228,12 @@ export default function BlogSection() {
         "Call me crazy, but you cannot market a business without content. The ads your customers see?",
       content:
         "Call me crazy, but you cannot market a business without content. The ads your customers see? That's content. The posts on your social media? That's content too. The words on your website? You guessed it – content.",
-      image: "/images/blog/future-work.jpg",
+      image: "/images/blog/future-work.png",
       slug: "/blog/future-of-work",
+      featured_image: {
+        main_image: "/images/blog/future-work.png",
+        thumbnail: "/images/blog/future-work.png",
+      },
     },
   ];
 
@@ -188,6 +258,17 @@ export default function BlogSection() {
       setIsAnimating(true);
       setActiveIndex((prev) => (prev === blogPosts.length - 1 ? 0 : prev + 1));
       setTimeout(() => setIsAnimating(false), 500);
+    }
+  };
+
+  // Function to handle image load errors
+  const handleImageError = (postId: string) => {
+    setImageLoadErrors((prev) => ({
+      ...prev,
+      [postId]: true,
+    }));
+    if (DEBUG) {
+      console.warn(`[BlogSection] Image load error for post ID: ${postId}`);
     }
   };
 
@@ -260,6 +341,13 @@ export default function BlogSection() {
             {blogPosts.slice(0, 3).map((post, index) => {
               const isActive = index === activeIndex;
               const isHovered = index === hoverIndex;
+              const hasImageError = imageLoadErrors[post.id];
+
+              // Determine image source with fallbacks
+              const imageSource =
+                post.featured_image?.main_image ||
+                post.image ||
+                PLACEHOLDER_IMAGES[index % PLACEHOLDER_IMAGES.length];
 
               return (
                 <motion.div
@@ -312,30 +400,37 @@ export default function BlogSection() {
                         Read More
                       </Link>
                     </div>
-                    <AnimatePresence>
-                      {(isActive || isHovered) && (
-                        <motion.div
-                          className="relative w-1/2 h-[280px]"
-                          initial={{ opacity: 0, width: 0 }}
-                          animate={{ opacity: 1, width: "50%" }}
-                          exit={{ opacity: 0, width: 0 }}
-                          transition={{ duration: 0.5 }}
-                        >
-                          <ImageWithFallback
-                            src={
-                              post.featured_image?.main_image ||
-                              post.image ||
-                              "/placeholder.svg"
-                            }
-                            alt={post.title}
-                            className="object-cover"
-                            fill
-                            sizes="(max-width: 768px) 100vw, 33vw"
-                            loading={index === 0 ? "eager" : "lazy"}
-                          />
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+
+                    {/* Image section - using regular Image component for better control */}
+                    {(isActive || isHovered) && (
+                      <div className="relative w-1/2 h-[280px] bg-gray-100">
+                        {/* Use regular Image component instead of AnimatePresence for better stability */}
+                        <Image
+                          src={imageSource || "/placeholder.png"}
+                          alt={post.title}
+                          className="object-cover"
+                          fill
+                          sizes="(max-width: 768px) 100vw, 33vw"
+                          priority={index === 0}
+                          onError={() => handleImageError(post.id)}
+                        />
+
+                        {/* Show debug info if image has error */}
+                        {DEBUG && hasImageError && (
+                          <div className="absolute inset-0 flex items-center justify-center bg-red-50 bg-opacity-70">
+                            <div className="text-center p-4">
+                              <AlertCircle className="h-8 w-8 text-red-500 mx-auto mb-2" />
+                              <p className="text-xs text-red-700">
+                                Image failed to load
+                              </p>
+                              <p className="text-xs text-red-700 break-all mt-1">
+                                {imageSource}
+                              </p>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    )}
                   </div>
                 </motion.div>
               );
@@ -391,64 +486,87 @@ export default function BlogSection() {
               className="flex transition-transform duration-500 ease-in-out"
               style={{ transform: `translateX(-${activeIndex * 100}%)` }}
             >
-              {blogPosts.map((post, index) => (
-                <div key={post.id} className="w-full flex-shrink-0 px-2">
-                  <div className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
-                    <div className="relative h-48 w-full">
-                      <ImageWithFallback
-                        src={
-                          post.featured_image?.thumbnail ||
-                          post.image ||
-                          "/placeholder.svg"
-                        }
-                        alt={post.title}
-                        fill
-                        className="object-cover"
-                        sizes="100vw"
-                        loading={index === activeIndex ? "eager" : "lazy"}
-                      />
-                    </div>
-                    <div className="p-5">
-                      <div className="flex items-center text-sm mb-2">
-                        <span className="text-[#0AB5B5]">{post.category}</span>
-                        <span className="mx-2">•</span>
-                        <span className="text-gray-500">
-                          {post.readTime || 5} min read
-                        </span>
+              {blogPosts.map((post, index) => {
+                const hasImageError = imageLoadErrors[post.id];
+
+                // Determine image source with fallbacks for mobile
+                const imageSource =
+                  post.featured_image?.thumbnail ||
+                  post.image ||
+                  PLACEHOLDER_IMAGES[index % PLACEHOLDER_IMAGES.length];
+
+                return (
+                  <div key={post.id} className="w-full flex-shrink-0 px-2">
+                    <div className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
+                      <div className="relative h-48 w-full bg-gray-100">
+                        {/* Use regular Image component for better control */}
+                        <Image
+                          src={imageSource || "/placeholder.png"}
+                          alt={post.title}
+                          fill
+                          className="object-cover"
+                          sizes="100vw"
+                          priority={index === activeIndex}
+                          onError={() => handleImageError(post.id)}
+                        />
+
+                        {/* Show debug info if image has error */}
+                        {DEBUG && hasImageError && (
+                          <div className="absolute inset-0 flex items-center justify-center bg-red-50 bg-opacity-70">
+                            <div className="text-center p-4">
+                              <AlertCircle className="h-6 w-6 text-red-500 mx-auto mb-1" />
+                              <p className="text-xs text-red-700">
+                                Image failed to load
+                              </p>
+                            </div>
+                          </div>
+                        )}
                       </div>
-                      <h3
-                        className="text-xl font-bold text-[#0a2540] mb-2"
-                        style={{
-                          fontFamily:
-                            "Helvetica Neue, Helvetica, Arial, sans-serif",
-                        }}
-                      >
-                        {post.title}
-                      </h3>
-                      <p
-                        className="text-gray-600 mb-4 line-clamp-3"
-                        style={{
-                          fontFamily:
-                            "Helvetica Neue, Helvetica, Arial, sans-serif",
-                        }}
-                      >
-                        {post.excerpt ||
-                          stripHtmlTags(post.content).substring(0, 100) + "..."}
-                      </p>
-                      <Link
-                        href={post.slug}
-                        className="text-[#0AB5B5] font-medium hover:underline"
-                        style={{
-                          fontFamily:
-                            "Helvetica Neue, Helvetica, Arial, sans-serif",
-                        }}
-                      >
-                        Read More
-                      </Link>
+                      <div className="p-5">
+                        <div className="flex items-center text-sm mb-2">
+                          <span className="text-[#0AB5B5]">
+                            {post.category}
+                          </span>
+                          <span className="mx-2">•</span>
+                          <span className="text-gray-500">
+                            {post.readTime || 5} min read
+                          </span>
+                        </div>
+                        <h3
+                          className="text-xl font-bold text-[#0a2540] mb-2"
+                          style={{
+                            fontFamily:
+                              "Helvetica Neue, Helvetica, Arial, sans-serif",
+                          }}
+                        >
+                          {post.title}
+                        </h3>
+                        <p
+                          className="text-gray-600 mb-4 line-clamp-3"
+                          style={{
+                            fontFamily:
+                              "Helvetica Neue, Helvetica, Arial, sans-serif",
+                          }}
+                        >
+                          {post.excerpt ||
+                            stripHtmlTags(post.content).substring(0, 100) +
+                              "..."}
+                        </p>
+                        <Link
+                          href={post.slug}
+                          className="text-[#0AB5B5] font-medium hover:underline"
+                          style={{
+                            fontFamily:
+                              "Helvetica Neue, Helvetica, Arial, sans-serif",
+                          }}
+                        >
+                          Read More
+                        </Link>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 
