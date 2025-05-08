@@ -167,11 +167,11 @@ export default function BlogSection() {
         "Call me crazy, but you cannot market a business without content. The ads your customers see?",
       content:
         "Call me crazy, but you cannot market a business without content. The ads your customers see? That's content. The posts on your social media? That's content too. The words on your website? You guessed it – content.",
-      image: "/images/blog/content-creation.png",
+      image: "/images/blog/content-creation.jpg",
       slug: "/blog/unlocking-potential-through-blind-hiring",
       featured_image: {
-        main_image: "/images/blog/content-creation.png",
-        thumbnail: "/images/blog/content-creation.png",
+        main_image: "/images/blog/content-creation.jpg",
+        thumbnail: "/images/blog/content-creation.jpg",
       },
     },
     {
@@ -182,11 +182,11 @@ export default function BlogSection() {
         "Call me crazy, but you cannot market a business without content. The ads your customers see?",
       content:
         "Call me crazy, but you cannot market a business without content. The ads your customers see? That's content. The posts on your social media? That's content too. The words on your website? You guessed it – content.",
-      image: "/images/blog/boardmeeting.png",
+      image: "/images/blog/boardmeeting.jpg",
       slug: "/blog/can-play-improve-productivity",
       featured_image: {
-        main_image: "/images/blog/boardmeeting.png",
-        thumbnail: "/images/blog/boardmeeting.png",
+        main_image: "/images/blog/boardmeeting.jpg",
+        thumbnail: "/images/blog/boardmeeting.jpg",
       },
     },
     {
