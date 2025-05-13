@@ -238,7 +238,7 @@ export default function Header() {
                 </p>
                 <div className="rounded-lg overflow-hidden">
                   <Image
-                    src="/images/executive.jpg"
+                    src="/images/suit-2-B-JP9Z-Z.png"
                     alt="Client Service"
                     width={300}
                     height={240}
@@ -440,7 +440,7 @@ export default function Header() {
                 </p>
                 <div className="rounded-lg overflow-hidden">
                   <Image
-                    src="/images/student.jpg"
+                    src="/images/smiling-BZHya-o5.png"
                     alt="Candidate Service"
                     width={300}
                     height={240}
@@ -551,7 +551,7 @@ export default function Header() {
                 <div className="flex gap-4">
                   <div className="w-24 h-20 bg-gray-100 rounded">
                     <Image
-                      src="/images/office.jpg"
+                      src="/placeholder.svg?key=tech-article"
                       alt="Tech article"
                       width={96}
                       height={80}
@@ -569,7 +569,7 @@ export default function Header() {
                       Unlocking Tomorrow: The Future of Tech Today
                     </h4>
                     <Link
-                      href="/blog"
+                      href="/blog/tech-future"
                       className="text-xs text-[#0AB5B5] mt-2 inline-block"
                     >
                       Read more &gt;
@@ -580,7 +580,7 @@ export default function Header() {
                 <div className="flex gap-4">
                   <div className="w-24 h-20 bg-gray-100 rounded">
                     <Image
-                      src="/images/office-meeting.jpg"
+                      src="/placeholder.svg?key=team-planning"
                       alt="Team planning"
                       width={96}
                       height={80}
@@ -598,7 +598,7 @@ export default function Header() {
                       Building Success: Effective Team Planning for Projects
                     </h4>
                     <Link
-                      href="/blog"
+                      href="/blog/team-planning"
                       className="text-xs text-[#0AB5B5] mt-2 inline-block"
                     >
                       Read more &gt;
@@ -625,7 +625,7 @@ export default function Header() {
           <div className="flex items-center justify-between p-4 border-b">
             <Link href="/" className="flex items-center">
               <Image
-                src="/coporaLogoFooter.svg"
+                src="/assets/coporaLogoFooter.png"
                 alt="Copora Logo"
                 width={150}
                 height={50}

@@ -23,10 +23,10 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       <Header />
-      {/* <div className="fixed top-[72px] left-0 w-full h-screen z-0"> */}
+      <div className="fixed top-[72px] left-0 w-full h-screen z-0">
       <HeroSection onTabChange={handleTabChange} />
-      {/* </div> */}
-      {/* <div className="relative z-10 mt-screen"> */}
+      </div>
+      <div className="relative z-10 mt-screen">
       <ServicesSection activeTab={activeTab} />
       <ServiceDetails activeTab={activeTab} />
       <CallToActionSection activeTab={activeTab} />
@@ -34,7 +34,7 @@ export default function Home() {
       <BlogSection />
       <FaqSection />
       <Footer />
-      {/* </div> */}
+      </div>
     </main>
   );
 }

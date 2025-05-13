@@ -207,7 +207,7 @@ function ClientServiceDetails() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div
-              className="text-lg sm:text-2xl font-Crimson text-[#0F6CBD] font-medium mb-2 flex items-center"
+              className="text-lg sm:text-1xl font-Crimson text-[#0F6CBD] font-medium mb-2 flex items-center"
               style={{ fontFamily: "var(--font-medium)" }}
             >
               <UsersIcon className="w-5 h-5 mr-2 text-[#0F6CBD]" />
@@ -292,7 +292,7 @@ function ClientServiceDetails() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div
-              className="text-lg sm:text-2xl font-Crimson text-[#0F6CBD] font-medium mb-2 flex items-center"
+              className="text-lg sm:text-1xl font-Crimson text-[#0F6CBD] font-medium mb-2 flex items-center"
               style={{ fontFamily: "var(--font-medium)" }}
             >
               <BriefcaseIcon className="w-5 h-5 mr-2 " />
@@ -375,7 +375,7 @@ function ClientServiceDetails() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div
-              className="text-lg sm:text-2xl font-Crimson text-[#0F6CBD] font-medium mb-2 flex items-center"
+              className="text-lg sm:text-1xl font-Crimson text-[#0F6CBD] font-medium mb-2 flex items-center"
               style={{ fontFamily: "var(--font-medium)" }}
             >
               <ShieldCheckIcon className="w-5 h-5 mr-2 text-[#C50F1F]" />
@@ -458,7 +458,7 @@ function ClientServiceDetails() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div
-              className="text-lg sm:text-2xl font-Crimson text-[#0F6CBD] font-medium mb-2 flex items-center"
+              className="text-lg sm:text-1xl font-Crimson text-[#0F6CBD] font-medium mb-2 flex items-center"
               style={{ fontFamily: "var(--font-medium)" }}
             >
               <PresentationChartBarIcon className="w-5 h-5 mr-2 text-[#0F548C]" />
@@ -540,7 +540,7 @@ function ClientServiceDetails() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div
-              className="text-lg sm:text-2xl font-Crimson text-[#0F6CBD] font-medium mb-2 flex items-center"
+              className="text-lg sm:text-1xl font-Crimson text-[#0F6CBD] font-medium mb-2 flex items-center"
               style={{ fontFamily: "var(--font-medium)" }}
             >
               <PencilIcon className="w-5 h-5 mr-2 " />
@@ -794,7 +794,7 @@ function CandidateServiceDetails() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div
-              className="text-lg sm:text-2xl font-Crimson text-[#0F6CBD] font-medium mb-2 flex items-center"
+              className="text-lg sm:text-1xl font-Crimson text-[#0F6CBD] font-medium mb-2 flex items-center"
               style={{ fontFamily: "var(--font-medium)" }}
             >
               <ShieldCheckIcon className="w-5 h-5 mr-2 text-[#C50F1F]" />
@@ -876,7 +876,7 @@ function CandidateServiceDetails() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div
-              className="text-lg sm:text-2xl font-Crimson text-[#0F6CBD] font-medium mb-2 flex items-center"
+              className="text-lg sm:text-1xl font-Crimson text-[#0F6CBD] font-medium mb-2 flex items-center"
               style={{ fontFamily: "var(--font-medium)" }}
             >
               <BriefcaseIcon className="w-5 h-5 mr-2 " />
@@ -958,7 +958,7 @@ function CandidateServiceDetails() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div
-              className="text-lg sm:text-2xl font-Crimson text-[#0F6CBD] font-medium mb-2 flex items-center"
+              className="text-lg sm:text-1xl font-Crimson text-[#0F6CBD] font-medium mb-2 flex items-center"
               style={{ fontFamily: "var(--font-medium)" }}
             >
               <PresentationChartBarIcon className="w-5 h-5 mr-2 text-[#0F548C]" />
@@ -1040,7 +1040,7 @@ function CandidateServiceDetails() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div
-              className="text-lg sm:text-2xl font-Crimson text-[#0F6CBD] font-medium mb-2 flex items-center"
+              className="text-lg sm:text-1xl font-Crimson text-[#0F6CBD] font-medium mb-2 flex items-center"
               style={{ fontFamily: "var(--font-medium)" }}
             >
               <UsersIcon className="w-5 h-5 mr-2 text-[#0F6CBD]" />
@@ -1122,7 +1122,7 @@ function CandidateServiceDetails() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div
-              className="text-lg sm:text-2xl font-Crimson text-[#0F6CBD] font-medium mb-2 flex items-center"
+              className="text-lg sm:text-1xl font-Crimson text-[#0F6CBD] font-medium mb-2 flex items-center"
               style={{ fontFamily: "var(--font-medium)" }}
             >
               <PencilIcon className="w-5 h-5 mr-2 " />
