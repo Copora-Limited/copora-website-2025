@@ -238,7 +238,7 @@ export default function Header() {
                 </p>
                 <div className="rounded-lg overflow-hidden">
                   <Image
-                    src="/images/suit-2-B-JP9Z-Z.png"
+                    src="/images/menu-banner-1.jpg"
                     alt="Client Service"
                     width={300}
                     height={240}
@@ -440,7 +440,7 @@ export default function Header() {
                 </p>
                 <div className="rounded-lg overflow-hidden">
                   <Image
-                    src="/images/smiling-BZHya-o5.png"
+                    src="/images/menu-banner-2.jpg"
                     alt="Candidate Service"
                     width={300}
                     height={240}
@@ -551,7 +551,7 @@ export default function Header() {
                 <div className="flex gap-4">
                   <div className="w-24 h-20 bg-gray-100 rounded">
                     <Image
-                      src="/placeholder.svg?key=tech-article"
+                      src="/images/office.jpg?key=tech-article"
                       alt="Tech article"
                       width={96}
                       height={80}
@@ -580,7 +580,7 @@ export default function Header() {
                 <div className="flex gap-4">
                   <div className="w-24 h-20 bg-gray-100 rounded">
                     <Image
-                      src="/placeholder.svg?key=team-planning"
+                      src="/images/office-meeting.jpg?key=team-planning"
                       alt="Team planning"
                       width={96}
                       height={80}
