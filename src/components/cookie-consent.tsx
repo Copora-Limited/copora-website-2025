@@ -1,16 +1,16 @@
 /* eslint-disable react/no-unescaped-entities */
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { X } from "lucide-react"
+import { useState, useEffect } from "react";
+import { X } from "lucide-react";
 
 type CookiePreferences = {
-  essential: boolean
-  marketing: boolean
-  personalization: boolean
-  analytics: boolean
-  hasConsented: boolean
-}
+  essential: boolean;
+  marketing: boolean;
+  personalization: boolean;
+  analytics: boolean;
+  hasConsented: boolean;
+};
 
 const defaultPreferences: CookiePreferences = {
   essential: true, // Essential cookies are always required
@@ -18,32 +18,33 @@ const defaultPreferences: CookiePreferences = {
   personalization: false,
   analytics: false,
   hasConsented: false,
-}
+};
 
 export default function CookieConsent() {
-  const [showBanner, setShowBanner] = useState(false)
-  const [showPreferences, setShowPreferences] = useState(false)
-  const [preferences, setPreferences] = useState<CookiePreferences>(defaultPreferences)
+  const [showBanner, setShowBanner] = useState(false);
+  const [showPreferences, setShowPreferences] = useState(false);
+  const [preferences, setPreferences] =
+    useState<CookiePreferences>(defaultPreferences);
 
   useEffect(() => {
     // Check if user has already made a choice
-    const savedPreferences = localStorage.getItem("cookiePreferences")
+    const savedPreferences = localStorage.getItem("cookiePreferences");
 
     if (savedPreferences) {
-      const parsedPreferences = JSON.parse(savedPreferences)
-      setPreferences(parsedPreferences)
+      const parsedPreferences = JSON.parse(savedPreferences);
+      setPreferences(parsedPreferences);
 
       // If user has already consented, don't show the banner
       if (parsedPreferences.hasConsented) {
-        setShowBanner(false)
+        setShowBanner(false);
       } else {
-        setShowBanner(true)
+        setShowBanner(true);
       }
     } else {
       // If no preferences are saved, show the banner
-      setShowBanner(true)
+      setShowBanner(true);
     }
-  }, [])
+  }, []);
 
   const handleAccept = () => {
     // Accept all cookies
@@ -53,15 +54,15 @@ export default function CookieConsent() {
       personalization: true,
       analytics: true,
       hasConsented: true,
-    }
+    };
 
-    setPreferences(newPreferences)
-    localStorage.setItem("cookiePreferences", JSON.stringify(newPreferences))
+    setPreferences(newPreferences);
+    localStorage.setItem("cookiePreferences", JSON.stringify(newPreferences));
 
     // Show preferences modal after accepting
-    setShowBanner(false)
-    setShowPreferences(true)
-  }
+    setShowBanner(false);
+    setShowPreferences(true);
+  };
 
   const handleDecline = () => {
     // Decline all non-essential cookies
@@ -71,47 +72,49 @@ export default function CookieConsent() {
       personalization: false,
       analytics: false,
       hasConsented: true,
-    }
+    };
 
-    setPreferences(newPreferences)
-    localStorage.setItem("cookiePreferences", JSON.stringify(newPreferences))
+    setPreferences(newPreferences);
+    localStorage.setItem("cookiePreferences", JSON.stringify(newPreferences));
 
-    setShowBanner(false)
-  }
+    setShowBanner(false);
+  };
 
   const handlePreferencesClick = () => {
-    setShowBanner(false)
-    setShowPreferences(true)
-  }
+    setShowBanner(false);
+    setShowPreferences(true);
+  };
 
   const handleSavePreferences = () => {
     // Save current preferences
     const newPreferences = {
       ...preferences,
       hasConsented: true,
-    }
+    };
 
-    localStorage.setItem("cookiePreferences", JSON.stringify(newPreferences))
-    setShowPreferences(false)
-  }
+    localStorage.setItem("cookiePreferences", JSON.stringify(newPreferences));
+    setShowPreferences(false);
+  };
 
   const handleCancel = () => {
     // If user has never consented before, show the banner again
     if (!preferences.hasConsented) {
-      setShowBanner(true)
+      setShowBanner(true);
     }
 
-    setShowPreferences(false)
-  }
+    setShowPreferences(false);
+  };
 
-  const handleTogglePreference = (key: keyof Omit<CookiePreferences, "hasConsented">) => {
-    if (key === "essential") return // Essential cookies cannot be toggled
+  const handleTogglePreference = (
+    key: keyof Omit<CookiePreferences, "hasConsented">
+  ) => {
+    if (key === "essential") return; // Essential cookies cannot be toggled
 
     setPreferences({
       ...preferences,
       [key]: !preferences[key],
-    })
-  }
+    });
+  };
 
   // Cookie consent banner - positioned on the right side
   const consentBanner = (
@@ -128,8 +131,9 @@ export default function CookieConsent() {
           </button>
         </div>
         <p className="text-sm text-gray-700 mb-4">
-          By clicking "Accept", you agree to the storing of cookies on your device to enhance site navigation, analyze
-          site usage, and assist in our marketing efforts.{" "}
+          By clicking "Accept", you agree to the storing of cookies on your
+          device to enhance site navigation, analyze site usage, and assist in
+          our marketing efforts.{" "}
           <a href="/privacy-policy" className="text-blue-600 underline">
             View our Privacy Policy
           </a>
@@ -158,7 +162,7 @@ export default function CookieConsent() {
         </div>
       </div>
     </div>
-  )
+  );
 
   // Preferences modal
   const preferencesModal = (
@@ -166,8 +170,14 @@ export default function CookieConsent() {
       <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         <div className="p-6">
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl font-bold">Manage consent preferences by category</h2>
-            <button onClick={handleCancel} className="p-1 text-gray-500 hover:text-gray-700" aria-label="Close">
+            <h2 className="text-2xl font-bold">
+              Manage consent preferences by category
+            </h2>
+            <button
+              onClick={handleCancel}
+              className="p-1 text-gray-500 hover:text-gray-700"
+              aria-label="Close"
+            >
               <X size={20} />
             </button>
           </div>
@@ -177,9 +187,13 @@ export default function CookieConsent() {
             <div className="pb-4 border-b border-gray-200">
               <div className="flex justify-between items-center mb-2">
                 <h3 className="font-semibold">Essential</h3>
-                <div className="bg-gray-200 text-xs px-2 py-1 rounded">Always active</div>
+                <div className="bg-gray-200 text-xs px-2 py-1 rounded">
+                  Always active
+                </div>
               </div>
-              <p className="text-sm text-gray-600">These items are required to enable basic website functionality.</p>
+              <p className="text-sm text-gray-600">
+                These items are required to enable basic website functionality.
+              </p>
             </div>
 
             {/* Marketing Cookies */}
@@ -197,9 +211,11 @@ export default function CookieConsent() {
                 </label>
               </div>
               <p className="text-sm text-gray-600">
-                These items are used to deliver advertising that is more relevant to you and your interests. They may
-                also be used to limit the number of times you see an advertisement and measure the effectiveness of
-                advertising campaigns. Advertising networks usually place them with the website operator's permission.
+                These items are used to deliver advertising that is more
+                relevant to you and your interests. They may also be used to
+                limit the number of times you see an advertisement and measure
+                the effectiveness of advertising campaigns. Advertising networks
+                usually place them with the website operator's permission.
               </p>
             </div>
 
@@ -218,9 +234,11 @@ export default function CookieConsent() {
                 </label>
               </div>
               <p className="text-sm text-gray-600">
-                These items allow the website to remember choices you make (such as your user name, language, or the
-                region you are in) and provide enhanced, more personal features. For example, a website may provide you
-                with local weather reports or traffic news by storing data about your current location.
+                These items allow the website to remember choices you make (such
+                as your user name, language, or the region you are in) and
+                provide enhanced, more personal features. For example, a website
+                may provide you with local weather reports or traffic news by
+                storing data about your current location.
               </p>
             </div>
 
@@ -239,15 +257,19 @@ export default function CookieConsent() {
                 </label>
               </div>
               <p className="text-sm text-gray-600">
-                These items help the website operator understand how its website performs, how visitors interact with
-                the site, and whether there may be technical issues. This storage type usually doesn't collect
-                information that identifies a visitor.
+                These items help the website operator understand how its website
+                performs, how visitors interact with the site, and whether there
+                may be technical issues. This storage type usually doesn't
+                collect information that identifies a visitor.
               </p>
             </div>
           </div>
 
           <div className="mt-8 flex justify-end space-x-4">
-            <button onClick={handleCancel} className="px-6 py-2 border border-gray-300 rounded-md hover:bg-gray-50">
+            <button
+              onClick={handleCancel}
+              className="px-6 py-2 border border-gray-300 rounded-md hover:bg-gray-50"
+            >
               Cancel
             </button>
             <button
@@ -260,16 +282,22 @@ export default function CookieConsent() {
         </div>
       </div>
     </div>
-  )
+  );
 
   // Cookie preferences button (always visible in the corner)
   const preferencesButton = (
-    <div className="fixed bottom-4 left-4 z-40">
+    <div className="fixed bottom-4 right-4 z-40">
       <button
         onClick={handlePreferencesClick}
         className="flex items-center space-x-2 bg-white px-4 py-2 rounded-full shadow-md text-sm hover:shadow-lg transition-shadow"
       >
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
             d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z"
             fill="currentColor"
@@ -294,7 +322,7 @@ export default function CookieConsent() {
         <span>Cookie preferences</span>
       </button>
     </div>
-  )
+  );
 
   return (
     <>
@@ -302,5 +330,5 @@ export default function CookieConsent() {
       {showPreferences && preferencesModal}
       {preferences.hasConsented && preferencesButton}
     </>
-  )
+  );
 }

@@ -80,7 +80,7 @@ export default function AboutPage() {
       <Header />
 
       {/* Hero Section with Video Background */}
-      <section className="relative w-full min-h-screen pt-24">
+      <section className="w-full min-h-screen pt-24">
         {/* Video Background */}
         <div className="absolute inset-0 w-full h-full overflow-hidden">
           <video

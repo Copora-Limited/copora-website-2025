@@ -168,7 +168,7 @@ export default function AssessmentPage() {
       </section>
 
       {/* Full-width Image Section */}
-      <section className="relative w-full py-24 bg-cover bg-center flex items-center justify-center">
+      <section className="w-full py-24 bg-cover bg-center flex items-center justify-center">
         <Image
           src="/images/manreading.jpg"
           alt="Assessment process visualization"

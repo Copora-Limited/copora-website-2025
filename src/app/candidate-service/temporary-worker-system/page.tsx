@@ -106,7 +106,7 @@ export default function TemporaryWorkerSystemPage() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
       {/* Hero Section */}
-      <section className="relative w-full min-h-[80vh] bg-gradient-to-br from-[#0a2540] to-[#03254a] text-white overflow-hidden">
+      <section className="w-full min-h-[80vh] bg-gradient-to-br from-[#0a2540] to-[#03254a] text-white overflow-hidden">
         <div className="absolute inset-0 opacity-20 bg-[url('/images/HeaderBg.png')] bg-cover bg-center"></div>
         <div className="container mx-auto px-6 py-16 relative z-10 flex flex-col h-full justify-center">
           <motion.div

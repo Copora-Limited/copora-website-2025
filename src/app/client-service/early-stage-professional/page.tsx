@@ -170,7 +170,7 @@ export default function EarlyStageProPage() {
       </section>
 
       {/* Full-width Image Section */}
-      <section className="relative w-full py-24 bg-cover bg-center flex items-center justify-center">
+      <section className="w-full py-24 bg-cover bg-center flex items-center justify-center">
         <Image
           src="/images/peoplemeeting.jpg"
           alt="Young professionals collaborating"

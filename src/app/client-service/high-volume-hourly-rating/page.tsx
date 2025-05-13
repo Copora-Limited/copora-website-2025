@@ -80,7 +80,6 @@ export default function HighVolumeHourlyPage() {
         "We streamline the onboarding process for large groups of new hires, ensuring efficiency and compliance.",
       image: "/images/talent-optimization/bulk-onboarding.jpg",
     },
-
   ];
 
   return (
@@ -163,7 +162,7 @@ export default function HighVolumeHourlyPage() {
       </section>
 
       {/* Full-width Image Section */}
-      <section className="relative w-full py-24 bg-cover bg-center flex items-center justify-center">
+      <section className="w-full py-24 bg-cover bg-center flex items-center justify-center">
         <Image
           src="/images/twolooking.jpg"
           alt="Large-scale recruitment process"

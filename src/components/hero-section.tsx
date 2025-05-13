@@ -35,7 +35,7 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
 
   return (
     <section
-      className="relative w-full min-h-screen md:h-screen overflow-hidden bg-[#0a2540] text-white"
+      className="w-full min-h-screen md:h-screen overflow-hidden bg-[#0a2540] text-white"
       style={{
         backgroundImage: "url('/images/HeaderBg.png')",
         backgroundSize: "cover",
@@ -177,7 +177,8 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
                   className="text-white/80 mb-8 max-w-md"
                   style={{ fontFamily: "var(--font-regular)" }}
                 >
-                  At Copora, we provide you with the right opportunities to take your career to the next level.
+                  At Copora, we provide you with the right opportunities to take
+                  your career to the next level.
                 </p>
 
                 <Link
