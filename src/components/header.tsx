@@ -551,7 +551,7 @@ export default function Header() {
                 <div className="flex gap-4">
                   <div className="w-24 h-20 bg-gray-100 rounded">
                     <Image
-                      src="/office.jpg?key=tech-article"
+                      src="/images/office.jpg?key=tech-article"
                       alt="Tech article"
                       width={96}
                       height={80}
@@ -580,7 +580,7 @@ export default function Header() {
                 <div className="flex gap-4">
                   <div className="w-24 h-20 bg-gray-100 rounded">
                     <Image
-                      src="/office-meeting.jpg?key=team-planning"
+                      src="/images/office-meeting.jpg?key=team-planning"
                       alt="Team planning"
                       width={96}
                       height={80}

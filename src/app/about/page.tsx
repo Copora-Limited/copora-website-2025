@@ -86,7 +86,7 @@ export default function AboutPage() {
           <video
             ref={videoRef}
             className="absolute top-0 left-0 w-full h-full object-cover"
-            src="/videos/about-us.mp4"
+            src="/videos/about.mp4"
             autoPlay
             loop
             playsInline
