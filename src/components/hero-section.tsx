@@ -280,7 +280,7 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute z-20 bottom-24 left-1/2 transform -translate-x-1/2">
+      {/* <div className="absolute z-20 bottom-24 left-1/2 transform -translate-x-1/2">
         <motion.div
           className="w-16 h-16 lg:w-20 lg:h-20 bg-[#00000033] rounded-full flex items-center justify-center hover:bg-[#00000060] cursor-pointer"
           onClick={scrollToNextSection}
@@ -297,7 +297,7 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
         >
           <ChevronDownIcon className="w-8 h-8 lg:w-10 lg:h-10 text-white" />
         </motion.div>
-      </div>
+      </div> */}
     </section>
   );
 }
