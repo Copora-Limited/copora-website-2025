@@ -238,7 +238,7 @@ export default function Header() {
                 </p>
                 <div className="rounded-lg overflow-hidden">
                   <Image
-                    src="/images/menu-banner-1.png"
+                    src="/images/menu-banner-1.jpg"
                     alt="Client Service"
                     width={300}
                     height={240}
@@ -440,7 +440,7 @@ export default function Header() {
                 </p>
                 <div className="rounded-lg overflow-hidden">
                   <Image
-                    src="/images/menu-banner-2.png"
+                    src="/images/menu-banner-2.jpg"
                     alt="Candidate Service"
                     width={300}
                     height={240}
