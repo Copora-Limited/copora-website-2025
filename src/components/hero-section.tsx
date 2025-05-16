@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ChevronDownIcon } from "lucide-react";
+// import { ChevronDownIcon } from "lucide-react";
 
 interface HeroSectionProps {
   onTabChange?: (tab: "hiring" | "freelancers") => void;
@@ -22,16 +22,16 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
     }
   };
 
-  const scrollToNextSection = () => {
-    // Calculate the height of the viewport
-    const viewportHeight = window.innerHeight;
+  // const scrollToNextSection = () => {
+  //   // Calculate the height of the viewport
+  //   const viewportHeight = window.innerHeight;
 
-    // Scroll to the next section (viewport height + some offset)
-    window.scrollTo({
-      top: viewportHeight, // Subtract header height
-      behavior: "smooth",
-    });
-  };
+  //   // Scroll to the next section (viewport height + some offset)
+  //   window.scrollTo({
+  //     top: viewportHeight, // Subtract header height
+  //     behavior: "smooth",
+  //   });
+  // };
 
   return (
     <section

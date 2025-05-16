@@ -1,25 +1,25 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 
-import { useRef, useEffect } from "react";
+// import { useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
+// import Header from "@/components/header";
+// import Footer from "@/components/footer";
 import ValueCarousel from "@/components/value-carousel";
 import type { CarouselSlide } from "@/components/value-carousel";
 
 export default function AboutPage() {
-  const videoRef = useRef<HTMLVideoElement>(null);
+  // const videoRef = useRef<HTMLVideoElement>(null);
 
-  useEffect(() => {
-    // Ensure video plays when component mounts
-    if (videoRef.current) {
-      videoRef.current.play().catch((error) => {
-        console.error("Error playing video:", error);
-      });
-    }
-  }, []);
+  // useEffect(() => {
+  //   // Ensure video plays when component mounts
+  //   if (videoRef.current) {
+  //     videoRef.current.play().catch((error) => {
+  //       console.error("Error playing video:", error);
+  //     });
+  //   }
+  // }, []);
 
   // Define the slides for the About page values carousel
   const aboutValueSlides: CarouselSlide[] = [
@@ -77,12 +77,20 @@ export default function AboutPage() {
 
   return (
     <main className="min-h-screen">
-      <Header />
+      {/* <Header /> */}
 
       {/* Hero Section with Video Background */}
-      <section className="w-full min-h-screen pt-24">
+      <section
+        className="w-full min-h-screen md:h-screen overflow-hidden bg-[#0a2540] text-white"
+        style={{
+          backgroundImage: "url('/images/HeaderBg.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         {/* Video Background */}
-        <div className="absolute inset-0 w-full h-full overflow-hidden">
+        {/* <div className="absolute inset-0 w-full h-full overflow-hidden">
           <video
             ref={videoRef}
             className="absolute top-0 left-0 w-full h-full object-cover"
@@ -94,7 +102,7 @@ export default function AboutPage() {
             poster="/images/aboutUsPoster.jpg"
           />
           <div className="absolute inset-0 bg-black bg-opacity-100"></div>
-        </div>
+        </div> */}
 
         {/* Hero Content */}
         <div className="container mx-auto px-6 relative z-10 flex flex-col items-center justify-center h-full text-center text-white pt-16 pb-24">
@@ -222,7 +230,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <Footer />
+      {/* <Footer /> */}
     </main>
   );
 }
